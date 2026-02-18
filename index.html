@@ -1,14 +1,107 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <title>로또 5게임 추천기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+            background-color: #f4f6f9;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .game {
+            margin: 20px 0;
+        }
+
+        .ball {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            margin: 5px;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: #222;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        /* 로또 실제 색상 */
+        .yellow { background-color: #fbc400; color: black; }
+        .blue   { background-color: #69c8f2; }
+        .red    { background-color: #ff7272; }
+        .gray   { background-color: #aaa; }
+        .green  { background-color: #b0d840; color: black; }
+
+    </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+
+    <h1>🎯 로또 5게임 자동 추천</h1>
+    <button onclick="generateLotto()">5게임 생성하기</button>
+
+    <div id="result"></div>
+
+    <script>
+        function getColorClass(num) {
+            if (num <= 10) return "yellow";
+            if (num <= 20) return "blue";
+            if (num <= 30) return "red";
+            if (num <= 40) return "gray";
+            return "green";
+        }
+
+        function generateSingleGame() {
+            let numbers = [];
+            while (numbers.length < 6) {
+                let randomNum = Math.floor(Math.random() * 45) + 1;
+                if (!numbers.includes(randomNum)) {
+                    numbers.push(randomNum);
+                }
+            }
+            return numbers.sort((a, b) => a - b);
+        }
+
+        function generateLotto() {
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+
+            for (let i = 1; i <= 5; i++) {
+                const gameNumbers = generateSingleGame();
+                const gameDiv = document.createElement("div");
+                gameDiv.className = "game";
+                gameDiv.innerHTML = `<strong>${i} 게임 :</strong> `;
+
+                gameNumbers.forEach(num => {
+                    let ball = document.createElement("span");
+                    ball.className = "ball " + getColorClass(num);
+                    ball.textContent = num;
+                    gameDiv.appendChild(ball);
+                });
+
+                resultDiv.appendChild(gameDiv);
+            }
+        }
+    </script>
+
 </body>
 </html>
+
