@@ -88,6 +88,17 @@
         .gray   { background-color: #aaa; }
         .green  { background-color: #b0d840; color: black; }
 
+        /* 댓글 섹션 */
+        .disqus-section {
+            margin: 50px auto;
+            max-width: 700px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
         /* 문의 폼 */
         .contact-section {
             margin: 50px auto;
@@ -146,6 +157,19 @@
     <button onclick="generateLotto()">5게임 생성하기</button>
 
     <div id="result"></div>
+
+    <div class="disqus-section">
+        <div id="disqus_thread"></div>
+        <script>
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://project-snow.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
     <div class="contact-section">
         <h2>📬 문의하기</h2>
