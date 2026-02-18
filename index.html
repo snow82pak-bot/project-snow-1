@@ -87,6 +87,55 @@
         .red    { background-color: #ff7272; }
         .gray   { background-color: #aaa; }
         .green  { background-color: #b0d840; color: black; }
+
+        /* 문의 폼 */
+        .contact-section {
+            margin: 50px auto;
+            max-width: 480px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .contact-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-section input,
+        .contact-section textarea {
+            width: 100%;
+            padding: 10px 14px;
+            margin-bottom: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact-section textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-section button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: var(--btn-bg);
+            color: var(--toggle-text);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-section button[type="submit"]:hover {
+            background-color: var(--btn-hover);
+        }
     </style>
 </head>
 <body>
@@ -97,6 +146,16 @@
     <button onclick="generateLotto()">5게임 생성하기</button>
 
     <div id="result"></div>
+
+    <div class="contact-section">
+        <h2>📬 문의하기</h2>
+        <form action="https://formspree.io/f/xnjbzpvq" method="POST">
+            <input type="text" name="name" placeholder="이름" required>
+            <input type="email" name="email" placeholder="이메일" required>
+            <textarea name="message" placeholder="문의 내용을 입력하세요." required></textarea>
+            <button type="submit">보내기</button>
+        </form>
+    </div>
 
     <script>
         function toggleDarkMode() {
