@@ -4,11 +4,33 @@
     <meta charset="UTF-8">
     <title>로또 5게임 추천기</title>
     <style>
+        :root {
+            --bg: #f4f6f9;
+            --text: #111;
+            --card-bg: #ffffff;
+            --btn-bg: #222;
+            --btn-hover: #444;
+            --toggle-bg: #222;
+            --toggle-text: #fff;
+        }
+
+        body.dark {
+            --bg: #1a1a2e;
+            --text: #f0f0f0;
+            --card-bg: #16213e;
+            --btn-bg: #e0e0e0;
+            --btn-hover: #bbb;
+            --toggle-bg: #f0f0f0;
+            --toggle-text: #111;
+        }
+
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 60px;
-            background-color: #f4f6f9;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         h1 {
@@ -36,12 +58,27 @@
             cursor: pointer;
             border: none;
             border-radius: 8px;
-            background-color: #222;
-            color: white;
+            background-color: var(--btn-bg);
+            color: var(--toggle-text);
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #444;
+            background-color: var(--btn-hover);
+        }
+
+        #toggleMode {
+            position: fixed;
+            top: 16px;
+            right: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 20px;
+            background-color: var(--toggle-bg);
+            color: var(--toggle-text);
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* 로또 실제 색상 */
@@ -50,10 +87,11 @@
         .red    { background-color: #ff7272; }
         .gray   { background-color: #aaa; }
         .green  { background-color: #b0d840; color: black; }
-
     </style>
 </head>
 <body>
+
+    <button id="toggleMode" onclick="toggleDarkMode()">🌙 다크모드</button>
 
     <h1>🎯 로또 5게임 자동 추천</h1>
     <button onclick="generateLotto()">5게임 생성하기</button>
@@ -61,6 +99,17 @@
     <div id="result"></div>
 
     <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const btn = document.getElementById("toggleMode");
+            body.classList.toggle("dark");
+            if (body.classList.contains("dark")) {
+                btn.textContent = "☀️ 라이트모드";
+            } else {
+                btn.textContent = "🌙 다크모드";
+            }
+        }
+
         function getColorClass(num) {
             if (num <= 10) return "yellow";
             if (num <= 20) return "blue";
