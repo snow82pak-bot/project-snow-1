@@ -15,12 +15,8 @@
             color: #333;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .container { max-width: 560px; margin: 0 auto; }
 
-        /* Header */
         .header {
             text-align: center;
             padding: 30px 0 20px;
@@ -35,18 +31,9 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
-        .header h1 {
-            font-size: 28px;
-            font-weight: 800;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .header p {
-            font-size: 15px;
-            margin-top: 8px;
-            opacity: 0.85;
-        }
+        .header h1 { font-size: 28px; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header p { font-size: 15px; margin-top: 8px; opacity: 0.85; }
 
-        /* Card */
         .card {
             background: white;
             border-radius: 24px;
@@ -55,62 +42,32 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
 
-        /* Tabs */
-        .tabs {
-            display: flex;
-            background: #f0f0f5;
-            border-radius: 12px;
-            padding: 4px;
-            margin-bottom: 24px;
-        }
-        .tab-btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: transparent;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            color: #888;
-            transition: all 0.2s;
-        }
-        .tab-btn.active {
-            background: white;
-            color: #6c63ff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        /* Upload Area */
+        /* Upload */
         .upload-area {
             border: 2.5px dashed #c0b5ff;
             border-radius: 16px;
-            padding: 40px 20px;
+            padding: 44px 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.2s;
             background: #faf9ff;
         }
         .upload-area:hover { border-color: #6c63ff; background: #f0eeff; }
-        .upload-area .upload-icon { font-size: 48px; margin-bottom: 12px; }
+        .upload-icon { font-size: 48px; margin-bottom: 12px; }
         .upload-area p { color: #888; font-size: 14px; }
         .upload-area strong { color: #6c63ff; }
         #fileInput { display: none; }
 
         /* Preview */
-        #previewContainer {
-            display: none;
-            text-align: center;
-            margin-top: 16px;
-        }
+        #previewContainer { display: none; text-align: center; margin-top: 16px; }
         #previewImg {
             max-width: 100%;
-            max-height: 280px;
+            max-height: 300px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.12);
             object-fit: cover;
         }
-        .retake-btn {
+        .change-btn {
             margin-top: 10px;
             background: none;
             border: 1.5px solid #ddd;
@@ -120,26 +77,7 @@
             color: #888;
             cursor: pointer;
         }
-        .retake-btn:hover { border-color: #6c63ff; color: #6c63ff; }
-
-        /* Webcam */
-        #webcamSection { display: none; text-align: center; }
-        #webcamCanvas {
-            border-radius: 16px;
-            max-width: 100%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-        }
-        .webcam-controls { margin-top: 12px; display: flex; gap: 10px; justify-content: center; }
-        .webcam-snap-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 24px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+        .change-btn:hover { border-color: #6c63ff; color: #6c63ff; }
 
         /* Analyze Button */
         #analyzeBtn {
@@ -157,17 +95,11 @@
             display: none;
         }
         #analyzeBtn:hover { opacity: 0.92; transform: translateY(-1px); }
-        #analyzeBtn:active { transform: translateY(0); }
 
         /* Loading */
-        #loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
+        #loading { display: none; text-align: center; padding: 24px 0; }
         .spinner {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             border: 5px solid #f0eeff;
             border-top-color: #6c63ff;
             border-radius: 50%;
@@ -185,71 +117,33 @@
             border-radius: 20px;
             margin-bottom: 20px;
         }
-        .result-badge.dog {
-            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-            border: 2px solid #ffb74d;
-        }
-        .result-badge.cat {
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            border: 2px solid #66bb6a;
-        }
+        .result-badge.dog { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 2px solid #ffb74d; }
+        .result-badge.cat { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #66bb6a; }
+
         .result-emoji { font-size: 72px; animation: pop 0.4s cubic-bezier(0.17,0.67,0.58,1.3); }
-        @keyframes pop {
-            0% { transform: scale(0); }
-            100% { transform: scale(1); }
-        }
-        .result-title {
-            font-size: 26px;
-            font-weight: 800;
-            margin-top: 10px;
-        }
+        @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+
+        .result-title { font-size: 26px; font-weight: 800; margin-top: 10px; }
         .result-badge.dog .result-title { color: #e65100; }
         .result-badge.cat .result-title { color: #2e7d32; }
         .result-sub { font-size: 14px; color: #777; margin-top: 4px; }
 
         /* Bars */
-        .bars { margin-top: 4px; }
         .bar-item { margin-bottom: 14px; }
-        .bar-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .bar-track {
-            background: #f0f0f5;
-            border-radius: 100px;
-            height: 12px;
-            overflow: hidden;
-        }
-        .bar-fill {
-            height: 100%;
-            border-radius: 100px;
-            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
+        .bar-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+        .bar-track { background: #f0f0f5; border-radius: 100px; height: 12px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 100px; transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .bar-fill.dog { background: linear-gradient(90deg, #ffb74d, #ff9800); }
         .bar-fill.cat { background: linear-gradient(90deg, #66bb6a, #43a047); }
 
         /* Description */
-        .desc-card {
-            background: #faf9ff;
-            border-radius: 16px;
-            padding: 20px;
-            margin-top: 16px;
-        }
+        .desc-card { background: #faf9ff; border-radius: 16px; padding: 20px; margin-top: 16px; }
         .desc-card h3 { font-size: 16px; margin-bottom: 10px; color: #6c63ff; }
         .desc-card ul { list-style: none; padding: 0; }
-        .desc-card ul li {
-            padding: 6px 0;
-            font-size: 14px;
-            color: #555;
-            border-bottom: 1px solid #eee;
-        }
+        .desc-card ul li { padding: 6px 0; font-size: 14px; color: #555; border-bottom: 1px solid #eee; }
         .desc-card ul li:last-child { border-bottom: none; }
         .desc-card ul li::before { content: "✦ "; color: #6c63ff; }
 
-        /* Retry */
         #retryBtn {
             width: 100%;
             margin-top: 16px;
@@ -265,7 +159,6 @@
         }
         #retryBtn:hover { background: #6c63ff; color: white; }
 
-        /* Footer */
         .footer {
             text-align: center;
             color: rgba(255,255,255,0.6);
@@ -284,49 +177,20 @@
     </div>
 
     <div class="card">
-        <!-- Tabs -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('upload')">📁 사진 업로드</button>
-            <button class="tab-btn" onclick="switchTab('webcam')">📷 웹캠 촬영</button>
+        <!-- Upload -->
+        <div class="upload-area" onclick="document.getElementById('fileInput').click()" id="dropZone">
+            <div class="upload-icon">🖼️</div>
+            <p><strong>클릭</strong>하거나 사진을 끌어다 놓으세요</p>
+            <p style="margin-top:6px; font-size:13px;">JPG, PNG, WEBP 지원</p>
+        </div>
+        <input type="file" id="fileInput" accept="image/*">
+
+        <div id="previewContainer">
+            <img id="previewImg" src="" alt="미리보기">
+            <br>
+            <button class="change-btn" onclick="resetUpload()">🔄 다른 사진 선택</button>
         </div>
 
-        <!-- Upload Section -->
-        <div id="uploadSection">
-            <div class="upload-area" onclick="document.getElementById('fileInput').click()" id="dropZone">
-                <div class="upload-icon">🖼️</div>
-                <p><strong>클릭</strong>하거나 사진을 끌어다 놓으세요</p>
-                <p style="margin-top:6px; font-size:13px;">JPG, PNG, WEBP 지원</p>
-            </div>
-            <input type="file" id="fileInput" accept="image/*">
-            <div id="previewContainer">
-                <img id="previewImg" src="" alt="미리보기">
-                <br>
-                <button class="retake-btn" onclick="resetUpload()">🔄 다른 사진 선택</button>
-            </div>
-        </div>
-
-        <!-- Webcam Section -->
-        <div id="webcamSection">
-            <div id="webcamStartBox" style="text-align:center; padding:30px 0;">
-                <div style="font-size:48px; margin-bottom:12px;">📷</div>
-                <p style="color:#888; font-size:14px; margin-bottom:16px;">웹캠으로 실시간 분석을 시작하세요</p>
-                <button class="webcam-snap-btn" onclick="startWebcam()">웹캠 시작하기</button>
-            </div>
-            <div id="webcamLiveBox" style="display:none; text-align:center;">
-                <div id="webcam-container" style="display:inline-block; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12);"></div>
-                <div id="liveResult" style="margin-top:14px; padding:14px; background:#faf9ff; border-radius:12px; display:none;">
-                    <div style="font-size:32px;" id="liveEmoji"></div>
-                    <div style="font-weight:800; font-size:18px; margin-top:4px;" id="liveLabel"></div>
-                    <div style="font-size:13px; color:#888; margin-top:2px;" id="liveConf"></div>
-                </div>
-                <div class="webcam-controls" style="margin-top:14px;">
-                    <button class="webcam-snap-btn" onclick="lockWebcamResult()">✅ 이 결과로 확정</button>
-                    <button class="retake-btn" onclick="stopWebcamAndReset()">⏹ 중지</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Analyze Button -->
         <button id="analyzeBtn" onclick="analyze()">🔍 동물상 분석하기</button>
 
         <!-- Loading -->
@@ -343,24 +207,16 @@
                 <div class="result-sub" id="resultSub"></div>
             </div>
 
-            <div class="bars">
-                <div class="bar-item">
-                    <div class="bar-label">
-                        <span>🐶 강아지상</span>
-                        <span id="dogPct">0%</span>
-                    </div>
-                    <div class="bar-track"><div class="bar-fill dog" id="dogBar" style="width:0%"></div></div>
-                </div>
-                <div class="bar-item">
-                    <div class="bar-label">
-                        <span>🐱 고양이상</span>
-                        <span id="catPct">0%</span>
-                    </div>
-                    <div class="bar-track"><div class="bar-fill cat" id="catBar" style="width:0%"></div></div>
-                </div>
+            <div class="bar-item">
+                <div class="bar-label"><span>🐶 강아지상</span><span id="dogPct">0%</span></div>
+                <div class="bar-track"><div class="bar-fill dog" id="dogBar" style="width:0%"></div></div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-label"><span>🐱 고양이상</span><span id="catPct">0%</span></div>
+                <div class="bar-track"><div class="bar-fill cat" id="catBar" style="width:0%"></div></div>
             </div>
 
-            <div class="desc-card" id="descCard">
+            <div class="desc-card">
                 <h3 id="descTitle"></h3>
                 <ul id="descList"></ul>
             </div>
@@ -403,49 +259,18 @@
     };
 
     let model = null;
-    let currentTab = "upload";
-    let imageReady = false;
-    let webcam = null;
-    let webcamLoopRunning = false;
-    let lastPredictions = null;
 
-    // Load model
     async function loadModel() {
         if (!model) {
             model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
         }
     }
 
-    // Tab switch
-    function switchTab(tab) {
-        currentTab = tab;
-        document.querySelectorAll(".tab-btn").forEach((b, i) => {
-            b.classList.toggle("active", (i === 0 && tab === "upload") || (i === 1 && tab === "webcam"));
-        });
-        document.getElementById("uploadSection").style.display = tab === "upload" ? "block" : "none";
-        document.getElementById("webcamSection").style.display = tab === "webcam" ? "block" : "none";
-        document.getElementById("analyzeBtn").style.display = "none";
-        document.getElementById("result").style.display = "none";
-        document.getElementById("loading").style.display = "none";
-        imageReady = false;
-
-        if (tab !== "webcam") stopWebcam();
-    }
-
-    // Upload
+    // File input
     document.getElementById("fileInput").addEventListener("change", function(e) {
         const file = e.target.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = ev => {
-            document.getElementById("previewImg").src = ev.target.result;
-            document.getElementById("previewContainer").style.display = "block";
-            document.getElementById("dropZone").style.display = "none";
-            document.getElementById("analyzeBtn").style.display = "block";
-            document.getElementById("result").style.display = "none";
-            imageReady = true;
-        };
-        reader.readAsDataURL(file);
+        loadPreview(file);
     });
 
     // Drag & drop
@@ -456,18 +281,20 @@
         e.preventDefault();
         dropZone.style.background = "#faf9ff";
         const file = e.dataTransfer.files[0];
-        if (!file || !file.type.startsWith("image/")) return;
+        if (file && file.type.startsWith("image/")) loadPreview(file);
+    });
+
+    function loadPreview(file) {
         const reader = new FileReader();
         reader.onload = ev => {
             document.getElementById("previewImg").src = ev.target.result;
-            document.getElementById("previewContainer").style.display = "block";
             document.getElementById("dropZone").style.display = "none";
+            document.getElementById("previewContainer").style.display = "block";
             document.getElementById("analyzeBtn").style.display = "block";
             document.getElementById("result").style.display = "none";
-            imageReady = true;
         };
         reader.readAsDataURL(file);
-    });
+    }
 
     function resetUpload() {
         document.getElementById("fileInput").value = "";
@@ -475,89 +302,15 @@
         document.getElementById("dropZone").style.display = "block";
         document.getElementById("analyzeBtn").style.display = "none";
         document.getElementById("result").style.display = "none";
-        imageReady = false;
     }
 
-    // Webcam — uses official tmImage.Webcam API
-    async function startWebcam() {
-        document.getElementById("webcamStartBox").style.display = "none";
-        document.getElementById("loading").style.display = "block";
-        document.getElementById("result").style.display = "none";
-
-        try {
-            await loadModel();
-            webcam = new tmImage.Webcam(320, 320, true); // width, height, flip
-            await webcam.setup();
-            await webcam.play();
-
-            const container = document.getElementById("webcam-container");
-            container.innerHTML = "";
-            container.appendChild(webcam.canvas);
-
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("webcamLiveBox").style.display = "block";
-            document.getElementById("liveResult").style.display = "block";
-
-            webcamLoopRunning = true;
-            webcamLoop();
-        } catch (err) {
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("webcamStartBox").style.display = "block";
-            alert("웹캠 접근 권한이 필요합니다: " + err.message);
-        }
-    }
-
-    async function webcamLoop() {
-        if (!webcamLoopRunning) return;
-        webcam.update();
-        const predictions = await model.predict(webcam.canvas);
-        lastPredictions = predictions;
-        updateLiveUI(predictions);
-        window.requestAnimationFrame(webcamLoop);
-    }
-
-    function updateLiveUI(predictions) {
-        const sorted = [...predictions].sort((a, b) => b.probability - a.probability);
-        const top = sorted[0];
-        const info = descriptions[top.className] || { emoji: "😊" };
-        const conf = Math.round(top.probability * 100);
-        document.getElementById("liveEmoji").textContent = info.emoji;
-        document.getElementById("liveLabel").textContent = top.className;
-        document.getElementById("liveConf").textContent = `신뢰도 ${conf}%`;
-    }
-
-    function lockWebcamResult() {
-        if (!lastPredictions) return;
-        webcamLoopRunning = false;
-        webcam.stop();
-        document.getElementById("webcamLiveBox").style.display = "none";
-        showResult(lastPredictions);
-    }
-
-    function stopWebcam() {
-        webcamLoopRunning = false;
-        if (webcam) { webcam.stop(); webcam = null; }
-    }
-
-    function stopWebcamAndReset() {
-        stopWebcam();
-        document.getElementById("webcamLiveBox").style.display = "none";
-        document.getElementById("webcamStartBox").style.display = "block";
-        document.getElementById("result").style.display = "none";
-        lastPredictions = null;
-    }
-
-    // Analyze (upload mode)
     async function analyze() {
-        if (!imageReady) return;
-
         document.getElementById("analyzeBtn").style.display = "none";
         document.getElementById("loading").style.display = "block";
         document.getElementById("result").style.display = "none";
 
         await loadModel();
-        const imgEl = document.getElementById("previewImg");
-        const predictions = await model.predict(imgEl);
+        const predictions = await model.predict(document.getElementById("previewImg"));
 
         document.getElementById("loading").style.display = "none";
         showResult(predictions);
@@ -565,14 +318,11 @@
 
     function showResult(predictions) {
         const sorted = [...predictions].sort((a, b) => b.probability - a.probability);
-        const top = sorted[0];
-        const label = top.className;
+        const label = sorted[0].className;
         const info = descriptions[label] || { emoji: "😊", sub: "", traits: [] };
 
-        const dogPred = predictions.find(p => p.className === "강아지상");
-        const catPred = predictions.find(p => p.className === "고양이상");
-        const dogP = dogPred ? Math.round(dogPred.probability * 100) : 0;
-        const catP = catPred ? Math.round(catPred.probability * 100) : 0;
+        const dogP = Math.round((predictions.find(p => p.className === "강아지상")?.probability ?? 0) * 100);
+        const catP = Math.round((predictions.find(p => p.className === "고양이상")?.probability ?? 0) * 100);
 
         const badge = document.getElementById("resultBadge");
         badge.className = "result-badge " + (label === "강아지상" ? "dog" : "cat");
@@ -580,7 +330,6 @@
         document.getElementById("resultTitle").textContent = label;
         document.getElementById("resultSub").textContent = info.sub;
 
-        // Reset bars before animation
         document.getElementById("dogBar").style.width = "0%";
         document.getElementById("catBar").style.width = "0%";
         setTimeout(() => {
@@ -591,22 +340,15 @@
         document.getElementById("catPct").textContent = catP + "%";
 
         document.getElementById("descTitle").textContent = label + " 특징";
-        const ul = document.getElementById("descList");
-        ul.innerHTML = info.traits.map(t => `<li>${t}</li>`).join("");
+        document.getElementById("descList").innerHTML = info.traits.map(t => `<li>${t}</li>`).join("");
 
         document.getElementById("result").style.display = "block";
     }
 
     function retry() {
+        resetUpload();
         document.getElementById("result").style.display = "none";
         document.getElementById("loading").style.display = "none";
-        if (currentTab === "upload") {
-            resetUpload();
-        } else {
-            stopWebcamAndReset();
-        }
-        imageReady = false;
-        lastPredictions = null;
     }
 </script>
 </body>
