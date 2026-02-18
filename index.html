@@ -2,238 +2,612 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>로또 5게임 추천기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물상 테스트 🐶🐱</title>
     <style>
-        :root {
-            --bg: #f4f6f9;
-            --text: #111;
-            --card-bg: #ffffff;
-            --btn-bg: #222;
-            --btn-hover: #444;
-            --toggle-bg: #222;
-            --toggle-text: #fff;
-        }
-
-        body.dark {
-            --bg: #1a1a2e;
-            --text: #f0f0f0;
-            --card-bg: #16213e;
-            --btn-bg: #e0e0e0;
-            --btn-hover: #bbb;
-            --toggle-bg: #f0f0f0;
-            --toggle-text: #111;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
             text-align: center;
-            margin-top: 60px;
-            background-color: var(--bg);
-            color: var(--text);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        h1 {
-            margin-bottom: 30px;
-        }
-
-        .game {
-            margin: 20px 0;
-        }
-
-        .ball {
-            display: inline-block;
-            width: 45px;
-            height: 45px;
-            line-height: 45px;
-            margin: 5px;
-            border-radius: 50%;
+            padding: 30px 0 20px;
             color: white;
-            font-weight: bold;
+        }
+        .header .emoji-row {
+            font-size: 52px;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .header p {
+            font-size: 15px;
+            margin-top: 8px;
+            opacity: 0.85;
         }
 
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            cursor: pointer;
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: #f0f0f5;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 24px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
             border: none;
-            border-radius: 8px;
-            background-color: var(--btn-bg);
-            color: var(--toggle-text);
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: var(--btn-hover);
-        }
-
-        #toggleMode {
-            position: fixed;
-            top: 16px;
-            right: 20px;
-            padding: 8px 16px;
+            background: transparent;
+            border-radius: 10px;
             font-size: 14px;
-            border-radius: 20px;
-            background-color: var(--toggle-bg);
-            color: var(--toggle-text);
+            font-weight: 600;
             cursor: pointer;
+            color: #888;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background: white;
+            color: #6c63ff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2.5px dashed #c0b5ff;
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #faf9ff;
+        }
+        .upload-area:hover { border-color: #6c63ff; background: #f0eeff; }
+        .upload-area .upload-icon { font-size: 48px; margin-bottom: 12px; }
+        .upload-area p { color: #888; font-size: 14px; }
+        .upload-area strong { color: #6c63ff; }
+        #fileInput { display: none; }
+
+        /* Preview */
+        #previewContainer {
+            display: none;
+            text-align: center;
+            margin-top: 16px;
+        }
+        #previewImg {
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            object-fit: cover;
+        }
+        .retake-btn {
+            margin-top: 10px;
+            background: none;
+            border: 1.5px solid #ddd;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 13px;
+            color: #888;
+            cursor: pointer;
+        }
+        .retake-btn:hover { border-color: #6c63ff; color: #6c63ff; }
+
+        /* Webcam */
+        #webcamSection { display: none; text-align: center; }
+        #webcamCanvas {
+            border-radius: 16px;
+            max-width: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        .webcam-controls { margin-top: 12px; display: flex; gap: 10px; justify-content: center; }
+        .webcam-snap-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
             border: none;
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
-        /* 로또 실제 색상 */
-        .yellow { background-color: #fbc400; color: black; }
-        .blue   { background-color: #69c8f2; }
-        .red    { background-color: #ff7272; }
-        .gray   { background-color: #aaa; }
-        .green  { background-color: #b0d840; color: black; }
-
-        /* 댓글 섹션 */
-        .disqus-section {
-            margin: 50px auto;
-            max-width: 700px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-            text-align: left;
+        /* Analyze Button */
+        #analyzeBtn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+            display: none;
         }
+        #analyzeBtn:hover { opacity: 0.92; transform: translateY(-1px); }
+        #analyzeBtn:active { transform: translateY(0); }
 
-        /* 문의 폼 */
-        .contact-section {
-            margin: 50px auto;
-            max-width: 480px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        /* Loading */
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
         }
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #f0eeff;
+            border-top-color: #6c63ff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .contact-section h2 {
+        /* Result */
+        #result { display: none; }
+
+        .result-badge {
+            text-align: center;
+            padding: 24px;
+            border-radius: 20px;
             margin-bottom: 20px;
         }
+        .result-badge.dog {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px solid #ffb74d;
+        }
+        .result-badge.cat {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #66bb6a;
+        }
+        .result-emoji { font-size: 72px; animation: pop 0.4s cubic-bezier(0.17,0.67,0.58,1.3); }
+        @keyframes pop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+        .result-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+        .result-badge.dog .result-title { color: #e65100; }
+        .result-badge.cat .result-title { color: #2e7d32; }
+        .result-sub { font-size: 14px; color: #777; margin-top: 4px; }
 
-        .contact-section input,
-        .contact-section textarea {
-            width: 100%;
-            padding: 10px 14px;
-            margin-bottom: 14px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+        /* Bars */
+        .bars { margin-top: 4px; }
+        .bar-item { margin-bottom: 14px; }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
             font-size: 14px;
-            box-sizing: border-box;
-            background-color: var(--bg);
-            color: var(--text);
-            transition: background-color 0.3s, color 0.3s;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
-
-        .contact-section textarea {
-            height: 120px;
-            resize: vertical;
+        .bar-track {
+            background: #f0f0f5;
+            border-radius: 100px;
+            height: 12px;
+            overflow: hidden;
         }
+        .bar-fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .bar-fill.dog { background: linear-gradient(90deg, #ffb74d, #ff9800); }
+        .bar-fill.cat { background: linear-gradient(90deg, #66bb6a, #43a047); }
 
-        .contact-section button[type="submit"] {
+        /* Description */
+        .desc-card {
+            background: #faf9ff;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        .desc-card h3 { font-size: 16px; margin-bottom: 10px; color: #6c63ff; }
+        .desc-card ul { list-style: none; padding: 0; }
+        .desc-card ul li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+        .desc-card ul li:last-child { border-bottom: none; }
+        .desc-card ul li::before { content: "✦ "; color: #6c63ff; }
+
+        /* Retry */
+        #retryBtn {
             width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            background-color: var(--btn-bg);
-            color: var(--toggle-text);
-            border: none;
-            border-radius: 8px;
+            margin-top: 16px;
+            padding: 14px;
+            background: white;
+            color: #6c63ff;
+            border: 2px solid #6c63ff;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.2s;
         }
+        #retryBtn:hover { background: #6c63ff; color: white; }
 
-        .contact-section button[type="submit"]:hover {
-            background-color: var(--btn-hover);
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            padding: 24px 0 10px;
         }
     </style>
 </head>
 <body>
 
-    <button id="toggleMode" onclick="toggleDarkMode()">🌙 다크모드</button>
-
-    <h1>🎯 로또 5게임 자동 추천</h1>
-    <button onclick="generateLotto()">5게임 생성하기</button>
-
-    <div id="result"></div>
-
-    <div class="disqus-section">
-        <div id="disqus_thread"></div>
-        <script>
-            (function() {
-                var d = document, s = d.createElement('script');
-                s.src = 'https://project-snow.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<div class="container">
+    <div class="header">
+        <div class="emoji-row">🐶🐱</div>
+        <h1>나는 강아지상? 고양이상?</h1>
+        <p>AI가 당신의 얼굴을 분석해 드립니다</p>
     </div>
 
-    <div class="contact-section">
-        <h2>📬 문의하기</h2>
-        <form action="https://formspree.io/f/xnjbzpvq" method="POST">
-            <input type="text" name="name" placeholder="이름" required>
-            <input type="email" name="email" placeholder="이메일" required>
-            <textarea name="message" placeholder="문의 내용을 입력하세요." required></textarea>
-            <button type="submit">보내기</button>
-        </form>
+    <div class="card">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('upload')">📁 사진 업로드</button>
+            <button class="tab-btn" onclick="switchTab('webcam')">📷 웹캠 촬영</button>
+        </div>
+
+        <!-- Upload Section -->
+        <div id="uploadSection">
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()" id="dropZone">
+                <div class="upload-icon">🖼️</div>
+                <p><strong>클릭</strong>하거나 사진을 끌어다 놓으세요</p>
+                <p style="margin-top:6px; font-size:13px;">JPG, PNG, WEBP 지원</p>
+            </div>
+            <input type="file" id="fileInput" accept="image/*">
+            <div id="previewContainer">
+                <img id="previewImg" src="" alt="미리보기">
+                <br>
+                <button class="retake-btn" onclick="resetUpload()">🔄 다른 사진 선택</button>
+            </div>
+        </div>
+
+        <!-- Webcam Section -->
+        <div id="webcamSection">
+            <div id="webcamStartBox" style="text-align:center; padding:30px 0;">
+                <div style="font-size:48px; margin-bottom:12px;">📷</div>
+                <p style="color:#888; font-size:14px; margin-bottom:16px;">웹캠으로 실시간 분석을 시작하세요</p>
+                <button class="webcam-snap-btn" onclick="startWebcam()">웹캠 시작하기</button>
+            </div>
+            <div id="webcamLiveBox" style="display:none; text-align:center;">
+                <div id="webcam-container" style="display:inline-block; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.12);"></div>
+                <div id="liveResult" style="margin-top:14px; padding:14px; background:#faf9ff; border-radius:12px; display:none;">
+                    <div style="font-size:32px;" id="liveEmoji"></div>
+                    <div style="font-weight:800; font-size:18px; margin-top:4px;" id="liveLabel"></div>
+                    <div style="font-size:13px; color:#888; margin-top:2px;" id="liveConf"></div>
+                </div>
+                <div class="webcam-controls" style="margin-top:14px;">
+                    <button class="webcam-snap-btn" onclick="lockWebcamResult()">✅ 이 결과로 확정</button>
+                    <button class="retake-btn" onclick="stopWebcamAndReset()">⏹ 중지</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analyze Button -->
+        <button id="analyzeBtn" onclick="analyze()">🔍 동물상 분석하기</button>
+
+        <!-- Loading -->
+        <div id="loading">
+            <div class="spinner"></div>
+            <p style="color:#888; font-size:14px;">AI가 열심히 분석 중이에요...</p>
+        </div>
+
+        <!-- Result -->
+        <div id="result">
+            <div class="result-badge" id="resultBadge">
+                <div class="result-emoji" id="resultEmoji"></div>
+                <div class="result-title" id="resultTitle"></div>
+                <div class="result-sub" id="resultSub"></div>
+            </div>
+
+            <div class="bars">
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>🐶 강아지상</span>
+                        <span id="dogPct">0%</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill dog" id="dogBar" style="width:0%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>🐱 고양이상</span>
+                        <span id="catPct">0%</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill cat" id="catBar" style="width:0%"></div></div>
+                </div>
+            </div>
+
+            <div class="desc-card" id="descCard">
+                <h3 id="descTitle"></h3>
+                <ul id="descList"></ul>
+            </div>
+
+            <button id="retryBtn" onclick="retry()">🔁 다시 테스트하기</button>
+        </div>
     </div>
 
-    <script>
-        function toggleDarkMode() {
-            const body = document.body;
-            const btn = document.getElementById("toggleMode");
-            body.classList.toggle("dark");
-            if (body.classList.contains("dark")) {
-                btn.textContent = "☀️ 라이트모드";
-            } else {
-                btn.textContent = "🌙 다크모드";
-            }
+    <div class="footer">Powered by Teachable Machine &amp; TensorFlow.js</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script>
+    const MODEL_URL = "https://teachablemachine.withgoogle.com/models/bKdeT_2zy/";
+
+    const descriptions = {
+        "강아지상": {
+            emoji: "🐶",
+            sub: "충성스럽고 따뜻한 매력의 소유자",
+            traits: [
+                "누구에게나 친근하고 편안한 분위기를 줘요",
+                "정이 많고 의리 있는 성격이에요",
+                "밝고 긍정적인 에너지가 넘쳐요",
+                "사람들이 먼저 다가오는 타입이에요",
+                "웃을 때 눈이 초승달처럼 휘어요"
+            ]
+        },
+        "고양이상": {
+            emoji: "🐱",
+            sub: "신비롭고 세련된 매력의 소유자",
+            traits: [
+                "독립적이고 자유로운 영혼이에요",
+                "차갑게 보이지만 알고 보면 다정해요",
+                "조용하지만 강한 존재감이 있어요",
+                "패션과 미적 감각이 뛰어나요",
+                "눈빛 하나로 분위기를 장악해요"
+            ]
         }
+    };
 
-        function getColorClass(num) {
-            if (num <= 10) return "yellow";
-            if (num <= 20) return "blue";
-            if (num <= 30) return "red";
-            if (num <= 40) return "gray";
-            return "green";
+    let model = null;
+    let currentTab = "upload";
+    let imageReady = false;
+    let webcam = null;
+    let webcamLoopRunning = false;
+    let lastPredictions = null;
+
+    // Load model
+    async function loadModel() {
+        if (!model) {
+            model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
         }
+    }
 
-        function generateSingleGame() {
-            let numbers = [];
-            while (numbers.length < 6) {
-                let randomNum = Math.floor(Math.random() * 45) + 1;
-                if (!numbers.includes(randomNum)) {
-                    numbers.push(randomNum);
-                }
-            }
-            return numbers.sort((a, b) => a - b);
+    // Tab switch
+    function switchTab(tab) {
+        currentTab = tab;
+        document.querySelectorAll(".tab-btn").forEach((b, i) => {
+            b.classList.toggle("active", (i === 0 && tab === "upload") || (i === 1 && tab === "webcam"));
+        });
+        document.getElementById("uploadSection").style.display = tab === "upload" ? "block" : "none";
+        document.getElementById("webcamSection").style.display = tab === "webcam" ? "block" : "none";
+        document.getElementById("analyzeBtn").style.display = "none";
+        document.getElementById("result").style.display = "none";
+        document.getElementById("loading").style.display = "none";
+        imageReady = false;
+
+        if (tab !== "webcam") stopWebcam();
+    }
+
+    // Upload
+    document.getElementById("fileInput").addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            document.getElementById("previewImg").src = ev.target.result;
+            document.getElementById("previewContainer").style.display = "block";
+            document.getElementById("dropZone").style.display = "none";
+            document.getElementById("analyzeBtn").style.display = "block";
+            document.getElementById("result").style.display = "none";
+            imageReady = true;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Drag & drop
+    const dropZone = document.getElementById("dropZone");
+    dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.style.background = "#ece9ff"; });
+    dropZone.addEventListener("dragleave", () => { dropZone.style.background = "#faf9ff"; });
+    dropZone.addEventListener("drop", e => {
+        e.preventDefault();
+        dropZone.style.background = "#faf9ff";
+        const file = e.dataTransfer.files[0];
+        if (!file || !file.type.startsWith("image/")) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            document.getElementById("previewImg").src = ev.target.result;
+            document.getElementById("previewContainer").style.display = "block";
+            document.getElementById("dropZone").style.display = "none";
+            document.getElementById("analyzeBtn").style.display = "block";
+            document.getElementById("result").style.display = "none";
+            imageReady = true;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    function resetUpload() {
+        document.getElementById("fileInput").value = "";
+        document.getElementById("previewContainer").style.display = "none";
+        document.getElementById("dropZone").style.display = "block";
+        document.getElementById("analyzeBtn").style.display = "none";
+        document.getElementById("result").style.display = "none";
+        imageReady = false;
+    }
+
+    // Webcam — uses official tmImage.Webcam API
+    async function startWebcam() {
+        document.getElementById("webcamStartBox").style.display = "none";
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("result").style.display = "none";
+
+        try {
+            await loadModel();
+            webcam = new tmImage.Webcam(320, 320, true); // width, height, flip
+            await webcam.setup();
+            await webcam.play();
+
+            const container = document.getElementById("webcam-container");
+            container.innerHTML = "";
+            container.appendChild(webcam.canvas);
+
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("webcamLiveBox").style.display = "block";
+            document.getElementById("liveResult").style.display = "block";
+
+            webcamLoopRunning = true;
+            webcamLoop();
+        } catch (err) {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("webcamStartBox").style.display = "block";
+            alert("웹캠 접근 권한이 필요합니다: " + err.message);
         }
+    }
 
-        function generateLotto() {
-            const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = "";
+    async function webcamLoop() {
+        if (!webcamLoopRunning) return;
+        webcam.update();
+        const predictions = await model.predict(webcam.canvas);
+        lastPredictions = predictions;
+        updateLiveUI(predictions);
+        window.requestAnimationFrame(webcamLoop);
+    }
 
-            for (let i = 1; i <= 5; i++) {
-                const gameNumbers = generateSingleGame();
-                const gameDiv = document.createElement("div");
-                gameDiv.className = "game";
-                gameDiv.innerHTML = `<strong>${i} 게임 :</strong> `;
+    function updateLiveUI(predictions) {
+        const sorted = [...predictions].sort((a, b) => b.probability - a.probability);
+        const top = sorted[0];
+        const info = descriptions[top.className] || { emoji: "😊" };
+        const conf = Math.round(top.probability * 100);
+        document.getElementById("liveEmoji").textContent = info.emoji;
+        document.getElementById("liveLabel").textContent = top.className;
+        document.getElementById("liveConf").textContent = `신뢰도 ${conf}%`;
+    }
 
-                gameNumbers.forEach(num => {
-                    let ball = document.createElement("span");
-                    ball.className = "ball " + getColorClass(num);
-                    ball.textContent = num;
-                    gameDiv.appendChild(ball);
-                });
+    function lockWebcamResult() {
+        if (!lastPredictions) return;
+        webcamLoopRunning = false;
+        webcam.stop();
+        document.getElementById("webcamLiveBox").style.display = "none";
+        showResult(lastPredictions);
+    }
 
-                resultDiv.appendChild(gameDiv);
-            }
+    function stopWebcam() {
+        webcamLoopRunning = false;
+        if (webcam) { webcam.stop(); webcam = null; }
+    }
+
+    function stopWebcamAndReset() {
+        stopWebcam();
+        document.getElementById("webcamLiveBox").style.display = "none";
+        document.getElementById("webcamStartBox").style.display = "block";
+        document.getElementById("result").style.display = "none";
+        lastPredictions = null;
+    }
+
+    // Analyze (upload mode)
+    async function analyze() {
+        if (!imageReady) return;
+
+        document.getElementById("analyzeBtn").style.display = "none";
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("result").style.display = "none";
+
+        await loadModel();
+        const imgEl = document.getElementById("previewImg");
+        const predictions = await model.predict(imgEl);
+
+        document.getElementById("loading").style.display = "none";
+        showResult(predictions);
+    }
+
+    function showResult(predictions) {
+        const sorted = [...predictions].sort((a, b) => b.probability - a.probability);
+        const top = sorted[0];
+        const label = top.className;
+        const info = descriptions[label] || { emoji: "😊", sub: "", traits: [] };
+
+        const dogPred = predictions.find(p => p.className === "강아지상");
+        const catPred = predictions.find(p => p.className === "고양이상");
+        const dogP = dogPred ? Math.round(dogPred.probability * 100) : 0;
+        const catP = catPred ? Math.round(catPred.probability * 100) : 0;
+
+        const badge = document.getElementById("resultBadge");
+        badge.className = "result-badge " + (label === "강아지상" ? "dog" : "cat");
+        document.getElementById("resultEmoji").textContent = info.emoji;
+        document.getElementById("resultTitle").textContent = label;
+        document.getElementById("resultSub").textContent = info.sub;
+
+        // Reset bars before animation
+        document.getElementById("dogBar").style.width = "0%";
+        document.getElementById("catBar").style.width = "0%";
+        setTimeout(() => {
+            document.getElementById("dogBar").style.width = dogP + "%";
+            document.getElementById("catBar").style.width = catP + "%";
+        }, 100);
+        document.getElementById("dogPct").textContent = dogP + "%";
+        document.getElementById("catPct").textContent = catP + "%";
+
+        document.getElementById("descTitle").textContent = label + " 특징";
+        const ul = document.getElementById("descList");
+        ul.innerHTML = info.traits.map(t => `<li>${t}</li>`).join("");
+
+        document.getElementById("result").style.display = "block";
+    }
+
+    function retry() {
+        document.getElementById("result").style.display = "none";
+        document.getElementById("loading").style.display = "none";
+        if (currentTab === "upload") {
+            resetUpload();
+        } else {
+            stopWebcamAndReset();
         }
-    </script>
-
+        imageReady = false;
+        lastPredictions = null;
+    }
+</script>
 </body>
 </html>
-
