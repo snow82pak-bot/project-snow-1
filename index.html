@@ -4,47 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-5171148531167328">
-    <title>동물상 테스트 🐶🐱</title>
+    <meta name="description" content="AI가 내 얼굴을 분석해서 강아지상인지 고양이상인지 알려주는 무료 동물상 테스트. 사진 한 장으로 나의 동물상 유형과 성격 특징을 확인해보세요.">
+    <meta name="keywords" content="동물상 테스트, 강아지상, 고양이상, 얼굴형 테스트, AI 관상, 동물상 유형">
+    <meta property="og:title" content="동물상 테스트 - 나는 강아지상? 고양이상?">
+    <meta property="og:description" content="AI가 내 얼굴을 분석해서 강아지상인지 고양이상인지 알려드립니다. 무료로 테스트해보세요!">
+    <meta property="og:type" content="website">
+    <title>동물상 테스트 - 나는 강아지상? 고양이상? | AI 얼굴 분석</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5171148531167328" crossorigin="anonymous"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #5a52e0;
+            --bg: #f7f8fc;
+            --text: #2d2d2d;
+            --muted: #777;
+            --border: #e8e8f0;
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Apple SD Gothic Neo, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* NAV */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo { font-weight: 800; font-size: 18px; color: var(--primary); }
+        .nav-links { display: flex; gap: 24px; font-size: 14px; }
+        .nav-links a { color: var(--muted); font-weight: 500; }
+        .nav-links a:hover { color: var(--primary); text-decoration: none; }
+
+        /* HERO */
+        .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
-
-        .container { max-width: 560px; margin: 0 auto; }
-
-        .header {
-            text-align: center;
-            padding: 30px 0 20px;
             color: white;
+            text-align: center;
+            padding: 60px 20px 50px;
         }
-        .header .emoji-row {
-            font-size: 52px;
-            margin-bottom: 10px;
-            animation: bounce 2s infinite;
-        }
+        .hero-emoji { font-size: 56px; animation: bounce 2s infinite; display: block; margin-bottom: 14px; }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
-        .header h1 { font-size: 28px; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        .header p { font-size: 15px; margin-top: 8px; opacity: 0.85; }
+        .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+        .hero p { font-size: 16px; opacity: 0.88; max-width: 480px; margin: 0 auto; }
 
+        /* LAYOUT */
+        .page { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+        /* CARD */
         .card {
             background: white;
-            border-radius: 24px;
-            padding: 28px;
-            margin-top: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            border: 1px solid var(--border);
+        }
+        .card-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Upload */
+        /* TEST TOOL */
         .upload-area {
             border: 2.5px dashed #c0b5ff;
             border-radius: 16px;
@@ -54,19 +101,18 @@
             transition: all 0.2s;
             background: #faf9ff;
         }
-        .upload-area:hover { border-color: #6c63ff; background: #f0eeff; }
-        .upload-icon { font-size: 48px; margin-bottom: 12px; }
-        .upload-area p { color: #888; font-size: 14px; }
-        .upload-area strong { color: #6c63ff; }
+        .upload-area:hover { border-color: var(--primary); background: #f0eeff; }
+        .upload-icon { font-size: 44px; margin-bottom: 10px; }
+        .upload-area p { color: var(--muted); font-size: 14px; }
+        .upload-area strong { color: var(--primary); }
         #fileInput { display: none; }
 
-        /* Preview */
         #previewContainer { display: none; text-align: center; margin-top: 16px; }
         #previewImg {
             max-width: 100%;
             max-height: 300px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
             object-fit: cover;
         }
         .change-btn {
@@ -76,12 +122,11 @@
             border-radius: 20px;
             padding: 6px 16px;
             font-size: 13px;
-            color: #888;
+            color: var(--muted);
             cursor: pointer;
         }
-        .change-btn:hover { border-color: #6c63ff; color: #6c63ff; }
+        .change-btn:hover { border-color: var(--primary); color: var(--primary); }
 
-        /* Analyze Button */
         #analyzeBtn {
             width: 100%;
             margin-top: 20px;
@@ -93,122 +138,228 @@
             font-size: 17px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.1s, opacity 0.2s;
+            transition: opacity 0.2s, transform 0.1s;
             display: none;
         }
         #analyzeBtn:hover { opacity: 0.92; transform: translateY(-1px); }
 
-        /* Loading */
-        #loading { display: none; text-align: center; padding: 24px 0; }
+        #loading { display: none; text-align: center; padding: 28px 0; }
         .spinner {
-            width: 48px; height: 48px;
+            width: 46px; height: 46px;
             border: 5px solid #f0eeff;
-            border-top-color: #6c63ff;
+            border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
             margin: 0 auto 12px;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Result */
         #result { display: none; }
-
         .result-badge {
             text-align: center;
             padding: 24px;
-            border-radius: 20px;
+            border-radius: 18px;
             margin-bottom: 20px;
         }
         .result-badge.dog { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 2px solid #ffb74d; }
         .result-badge.cat { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #66bb6a; }
-
-        .result-emoji { font-size: 72px; animation: pop 0.4s cubic-bezier(0.17,0.67,0.58,1.3); }
+        .result-emoji { font-size: 68px; animation: pop 0.4s cubic-bezier(0.17,0.67,0.58,1.3); }
         @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
-
-        .result-title { font-size: 26px; font-weight: 800; margin-top: 10px; }
+        .result-title { font-size: 26px; font-weight: 800; margin-top: 8px; }
         .result-badge.dog .result-title { color: #e65100; }
         .result-badge.cat .result-title { color: #2e7d32; }
-        .result-sub { font-size: 14px; color: #777; margin-top: 4px; }
+        .result-sub { font-size: 14px; color: var(--muted); margin-top: 4px; }
 
-        /* Bars */
         .bar-item { margin-bottom: 14px; }
         .bar-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-        .bar-track { background: #f0f0f5; border-radius: 100px; height: 12px; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 100px; transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .bar-track { background: #f0f0f5; border-radius: 100px; height: 11px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 100px; transition: width 0.8s cubic-bezier(0.22,1,0.36,1); }
         .bar-fill.dog { background: linear-gradient(90deg, #ffb74d, #ff9800); }
         .bar-fill.cat { background: linear-gradient(90deg, #66bb6a, #43a047); }
 
-        /* Description */
-        .desc-card { background: #faf9ff; border-radius: 16px; padding: 20px; margin-top: 16px; }
-        .desc-card h3 { font-size: 16px; margin-bottom: 10px; color: #6c63ff; }
+        .desc-card { background: #faf9ff; border-radius: 14px; padding: 20px; margin-top: 16px; }
+        .desc-card h3 { font-size: 15px; margin-bottom: 10px; color: var(--primary); font-weight: 700; }
         .desc-card ul { list-style: none; padding: 0; }
         .desc-card ul li { padding: 6px 0; font-size: 14px; color: #555; border-bottom: 1px solid #eee; }
         .desc-card ul li:last-child { border-bottom: none; }
-        .desc-card ul li::before { content: "✦ "; color: #6c63ff; }
+        .desc-card ul li::before { content: "✦ "; color: var(--primary); }
 
         #retryBtn {
             width: 100%;
             margin-top: 16px;
-            padding: 14px;
+            padding: 13px;
             background: white;
-            color: #6c63ff;
-            border: 2px solid #6c63ff;
-            border-radius: 14px;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
         }
-        #retryBtn:hover { background: #6c63ff; color: white; }
+        #retryBtn:hover { background: var(--primary); color: white; }
 
-        .footer {
+        /* INFO SECTIONS */
+        .type-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 4px;
+        }
+        @media (max-width: 600px) { .type-grid { grid-template-columns: 1fr; } }
+
+        .type-box {
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .type-box.dog-box { background: #fff8f0; border: 1.5px solid #ffd0a0; }
+        .type-box.cat-box { background: #f0fff4; border: 1.5px solid #a0e0b0; }
+        .type-box .type-emoji { font-size: 36px; margin-bottom: 10px; display: block; }
+        .type-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+        .type-box.dog-box h3 { color: #bf4800; }
+        .type-box.cat-box h3 { color: #1b6b30; }
+        .type-box p { font-size: 14px; color: #555; margin-bottom: 10px; }
+        .type-box ul { padding-left: 18px; font-size: 14px; color: #555; }
+        .type-box ul li { margin-bottom: 5px; }
+
+        .steps { counter-reset: step; margin-top: 4px; }
+        .step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .step:last-child { border-bottom: none; }
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .step-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .step-body p { font-size: 14px; color: var(--muted); }
+
+        .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q { font-weight: 700; font-size: 15px; margin-bottom: 8px; color: var(--text); }
+        .faq-q::before { content: "Q. "; color: var(--primary); }
+        .faq-a { font-size: 14px; color: #555; }
+        .faq-a::before { content: "A. "; color: var(--muted); font-weight: 600; }
+
+        /* PRIVACY / DISCLAIMER */
+        .prose { font-size: 14px; color: #555; }
+        .prose h4 { font-size: 15px; font-weight: 700; color: var(--text); margin: 16px 0 6px; }
+        .prose h4:first-child { margin-top: 0; }
+        .prose p { margin-bottom: 10px; }
+        .prose ul { padding-left: 18px; margin-bottom: 10px; }
+        .prose ul li { margin-bottom: 4px; }
+
+        /* DISQUS */
+        .disqus-wrap { background: white; border-radius: 20px; padding: 32px; margin-top: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border: 1px solid var(--border); }
+
+        /* FOOTER */
+        footer {
+            background: #2d2d3a;
+            color: #aaa;
             text-align: center;
-            color: rgba(255,255,255,0.6);
-            font-size: 12px;
-            padding: 24px 0 10px;
+            padding: 36px 20px;
+            margin-top: 48px;
+            font-size: 13px;
+        }
+        footer .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 14px; flex-wrap: wrap; }
+        footer .footer-links a { color: #bbb; }
+        footer .footer-links a:hover { color: white; }
+        footer p { margin-top: 8px; line-height: 1.8; }
+
+        /* AD SLOT */
+        .ad-slot {
+            margin: 32px 0 0;
+            text-align: center;
+            min-height: 100px;
+        }
+        .ad-label {
+            font-size: 11px;
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <div class="emoji-row">🐶🐱</div>
-        <h1>나는 강아지상? 고양이상?</h1>
-        <p>AI가 당신의 얼굴을 분석해 드립니다</p>
+<!-- Navigation -->
+<nav>
+    <div class="nav-inner">
+        <span class="nav-logo">🐾 동물상 테스트</span>
+        <div class="nav-links">
+            <a href="#test">테스트</a>
+            <a href="#info">유형 소개</a>
+            <a href="#faq">FAQ</a>
+            <a href="#privacy">개인정보</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+    <span class="hero-emoji">🐶🐱</span>
+    <h1>나는 강아지상? 고양이상?</h1>
+    <p>AI가 얼굴 사진을 분석해 나의 동물상 유형과<br>성격 특징을 무료로 알려드립니다</p>
+</div>
+
+<div class="page">
+
+    <!-- AD: 상단 -->
+    <div class="ad-slot">
+        <div class="ad-label">ADVERTISEMENT</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5171148531167328"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div class="card">
-        <!-- Upload -->
+    <!-- TEST TOOL -->
+    <div class="card" id="test">
+        <div class="card-title">🔍 동물상 AI 분석기</div>
+
         <div class="upload-area" onclick="document.getElementById('fileInput').click()" id="dropZone">
             <div class="upload-icon">🖼️</div>
             <p><strong>클릭</strong>하거나 사진을 끌어다 놓으세요</p>
-            <p style="margin-top:6px; font-size:13px;">JPG, PNG, WEBP 지원</p>
+            <p style="margin-top:6px;font-size:13px;">JPG · PNG · WEBP 지원 · 얼굴이 잘 나온 정면 사진 권장</p>
         </div>
         <input type="file" id="fileInput" accept="image/*">
 
         <div id="previewContainer">
-            <img id="previewImg" src="" alt="미리보기">
+            <img id="previewImg" src="" alt="업로드한 사진 미리보기">
             <br>
             <button class="change-btn" onclick="resetUpload()">🔄 다른 사진 선택</button>
         </div>
 
         <button id="analyzeBtn" onclick="analyze()">🔍 동물상 분석하기</button>
 
-        <!-- Loading -->
         <div id="loading">
             <div class="spinner"></div>
-            <p style="color:#888; font-size:14px;">AI가 열심히 분석 중이에요...</p>
+            <p style="color:var(--muted);font-size:14px;">AI가 열심히 분석 중이에요...</p>
         </div>
 
-        <!-- Result -->
         <div id="result">
             <div class="result-badge" id="resultBadge">
                 <div class="result-emoji" id="resultEmoji"></div>
                 <div class="result-title" id="resultTitle"></div>
                 <div class="result-sub" id="resultSub"></div>
             </div>
-
             <div class="bar-item">
                 <div class="bar-label"><span>🐶 강아지상</span><span id="dogPct">0%</span></div>
                 <div class="bar-track"><div class="bar-fill dog" id="dogBar" style="width:0%"></div></div>
@@ -217,17 +368,196 @@
                 <div class="bar-label"><span>🐱 고양이상</span><span id="catPct">0%</span></div>
                 <div class="bar-track"><div class="bar-fill cat" id="catBar" style="width:0%"></div></div>
             </div>
-
             <div class="desc-card">
                 <h3 id="descTitle"></h3>
                 <ul id="descList"></ul>
             </div>
-
             <button id="retryBtn" onclick="retry()">🔁 다시 테스트하기</button>
         </div>
     </div>
 
-    <div style="background:white; border-radius:24px; padding:28px; margin-top:20px; box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+    <!-- 유형 소개 -->
+    <div class="card" id="info">
+        <div class="card-title">🐾 강아지상 vs 고양이상이란?</div>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">
+            동물상이란 얼굴의 이목구비와 전체적인 인상이 특정 동물과 닮았다고 느껴지는 관상 표현입니다.
+            강아지상과 고양이상은 가장 대표적인 유형으로, 각각 뚜렷한 인상과 성격적 특징이 있습니다.
+        </p>
+        <div class="type-grid">
+            <div class="type-box dog-box">
+                <span class="type-emoji">🐶</span>
+                <h3>강아지상</h3>
+                <p>둥글고 부드러운 눈매, 도톰한 볼, 전체적으로 따뜻하고 친근한 인상을 줍니다.</p>
+                <ul>
+                    <li>큰 눈, 둥근 눈매</li>
+                    <li>도톰하고 부드러운 입술</li>
+                    <li>통통하거나 둥근 얼굴형</li>
+                    <li>밝고 온화한 전체 인상</li>
+                    <li>웃을 때 눈이 휘어지는 타입</li>
+                </ul>
+            </div>
+            <div class="type-box cat-box">
+                <span class="type-emoji">🐱</span>
+                <h3>고양이상</h3>
+                <p>날카롭고 긴 눈매, 뚜렷한 이목구비, 전체적으로 세련되고 신비로운 인상을 줍니다.</p>
+                <ul>
+                    <li>길고 날카로운 눈매</li>
+                    <li>높고 뚜렷한 콧대</li>
+                    <li>각지거나 갸름한 얼굴형</li>
+                    <li>도도하고 차분한 전체 인상</li>
+                    <li>강한 눈빛으로 존재감 있는 타입</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- AD: 중간 -->
+    <div class="ad-slot">
+        <div class="ad-label">ADVERTISEMENT</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5171148531167328"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 성격 특징 -->
+    <div class="card">
+        <div class="card-title">💫 유형별 성격 & 매력</div>
+        <div class="type-grid">
+            <div class="type-box dog-box">
+                <span class="type-emoji">🐶</span>
+                <h3>강아지상 성격</h3>
+                <ul>
+                    <li>누구에게나 친근하고 편안한 분위기</li>
+                    <li>정이 많고 의리를 중시하는 성격</li>
+                    <li>밝고 긍정적인 에너지가 넘침</li>
+                    <li>사람들이 먼저 말을 거는 타입</li>
+                    <li>감정이 얼굴에 잘 드러남</li>
+                    <li>팀워크와 협동을 잘 하는 유형</li>
+                </ul>
+            </div>
+            <div class="type-box cat-box">
+                <span class="type-emoji">🐱</span>
+                <h3>고양이상 성격</h3>
+                <ul>
+                    <li>독립적이고 자유로운 성향</li>
+                    <li>차갑게 보이지만 알고 보면 다정함</li>
+                    <li>조용하지만 강한 존재감</li>
+                    <li>패션과 미적 감각이 뛰어남</li>
+                    <li>눈빛 하나로 분위기를 장악</li>
+                    <li>집중력이 높고 완벽주의 성향</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이용 방법 -->
+    <div class="card">
+        <div class="card-title">📋 테스트 이용 방법</div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                    <h4>얼굴 사진 준비</h4>
+                    <p>정면을 바라보는 밝은 조명의 사진이 가장 정확합니다. 얼굴이 화면의 절반 이상 차지하는 사진을 권장합니다.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                    <h4>사진 업로드</h4>
+                    <p>위의 업로드 영역을 클릭하거나 사진을 끌어다 놓으세요. JPG, PNG, WEBP 형식을 지원합니다.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                    <h4>AI 분석</h4>
+                    <p>Google Teachable Machine 기반 AI가 얼굴의 이목구비와 전체적인 인상을 분석합니다.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                    <h4>결과 확인</h4>
+                    <p>강아지상/고양이상 확률과 함께 나의 유형별 성격 특징을 확인하세요.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card" id="faq">
+        <div class="card-title">❓ 자주 묻는 질문</div>
+        <div class="faq-item">
+            <div class="faq-q">사진이 서버에 저장되나요?</div>
+            <div class="faq-a">아니요. 업로드된 사진은 브라우저 내에서만 처리되며 서버로 전송되거나 저장되지 않습니다. 분석이 완료되면 사진 데이터는 즉시 소멸됩니다.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">분석 결과가 100% 정확한가요?</div>
+            <div class="faq-a">AI 기반 분석으로 재미와 참고 목적으로 제공됩니다. 조명, 각도, 표정에 따라 결과가 달라질 수 있으며, 정확한 관상 진단이 아님을 참고해 주세요.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">어떤 사진이 가장 잘 맞나요?</div>
+            <div class="faq-a">밝은 조명 아래 정면을 바라보는 사진이 가장 정확합니다. 선글라스나 마스크 등으로 얼굴이 가려진 사진은 정확도가 떨어질 수 있습니다.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">AI 모델은 어떻게 만들어졌나요?</div>
+            <div class="faq-a">Google Teachable Machine을 이용해 다양한 강아지상/고양이상 연예인 얼굴 사진을 학습시킨 이미지 분류 모델입니다. MobileNet 기반의 전이학습(Transfer Learning) 방식을 사용합니다.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">결과가 마음에 안 들면 어떻게 하나요?</div>
+            <div class="faq-a">🔁 다시 테스트하기 버튼을 눌러 다른 사진으로 재시도해보세요. 각도나 조명이 다른 사진을 사용하면 다른 결과가 나올 수 있습니다.</div>
+        </div>
+    </div>
+
+    <!-- AD: 하단 -->
+    <div class="ad-slot">
+        <div class="ad-label">ADVERTISEMENT</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5171148531167328"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- 개인정보처리방침 -->
+    <div class="card" id="privacy">
+        <div class="card-title">🔒 개인정보처리방침 및 이용약관</div>
+        <div class="prose">
+            <h4>1. 수집하는 정보</h4>
+            <p>본 서비스는 사용자가 직접 업로드한 이미지 파일을 분석에 사용합니다. 업로드된 이미지는 사용자의 브라우저 내에서만 처리되며, 당사 서버로 전송되거나 저장되지 않습니다.</p>
+
+            <h4>2. 이미지 데이터 처리</h4>
+            <p>업로드된 얼굴 사진은 TensorFlow.js 및 Google Teachable Machine 모델을 통해 브라우저 내에서 로컬로 분석됩니다. 분석 완료 후 이미지 데이터는 즉시 삭제되며 어디에도 보관되지 않습니다.</p>
+
+            <h4>3. 광고 서비스</h4>
+            <p>본 사이트는 Google AdSense를 통한 광고를 표시합니다. Google은 사용자의 관심사 기반 광고를 제공하기 위해 쿠키를 사용할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.</p>
+
+            <h4>4. 쿠키 및 로그 데이터</h4>
+            <p>본 서비스는 댓글 기능(Disqus)과 광고(Google AdSense) 제공을 위해 제3자 쿠키를 사용할 수 있습니다. 브라우저 설정에서 쿠키를 비활성화할 수 있으나, 일부 기능이 제한될 수 있습니다.</p>
+
+            <h4>5. 서비스 이용 조건</h4>
+            <ul>
+                <li>본 서비스는 오락 및 참고 목적으로만 제공됩니다.</li>
+                <li>분석 결과는 과학적·의학적 근거가 없으며 재미로만 활용하시기 바랍니다.</li>
+                <li>타인의 사진을 당사자 동의 없이 업로드하는 행위를 금합니다.</li>
+                <li>서비스 이용으로 인한 불이익에 대해 운영자는 책임지지 않습니다.</li>
+            </ul>
+
+            <h4>6. 문의</h4>
+            <p>개인정보 처리에 관한 문의는 아래 댓글 또는 Disqus를 통해 남겨주시면 빠르게 답변 드리겠습니다.</p>
+        </div>
+    </div>
+
+    <!-- 댓글 (Disqus) -->
+    <div class="disqus-wrap">
+        <div class="card-title" style="margin-bottom:16px;">💬 댓글</div>
         <div id="disqus_thread"></div>
         <script>
             (function() {
@@ -237,11 +567,23 @@
                 (d.head || d.body).appendChild(s);
             })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>댓글을 보려면 JavaScript를 활성화해 주세요. <a href="https://disqus.com/?ref_noscript">Disqus로 작성된 댓글 보기</a></noscript>
     </div>
 
-    <div class="footer">Powered by Teachable Machine &amp; TensorFlow.js</div>
-</div>
+</div><!-- /page -->
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+        <a href="#test">동물상 테스트</a>
+        <a href="#info">유형 소개</a>
+        <a href="#faq">FAQ</a>
+        <a href="#privacy">개인정보처리방침</a>
+    </div>
+    <p>🐾 동물상 테스트 | AI 기반 얼굴 유형 분석 서비스</p>
+    <p style="margin-top:6px;">본 서비스는 오락 목적으로 제공되며 분석 결과는 참고용입니다.</p>
+    <p style="margin-top:6px;">Powered by Google Teachable Machine &amp; TensorFlow.js</p>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
@@ -281,14 +623,11 @@
         }
     }
 
-    // File input
     document.getElementById("fileInput").addEventListener("change", function(e) {
         const file = e.target.files[0];
-        if (!file) return;
-        loadPreview(file);
+        if (file) loadPreview(file);
     });
 
-    // Drag & drop
     const dropZone = document.getElementById("dropZone");
     dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.style.background = "#ece9ff"; });
     dropZone.addEventListener("dragleave", () => { dropZone.style.background = "#faf9ff"; });
