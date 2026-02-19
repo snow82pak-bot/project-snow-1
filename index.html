@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-5171148531167328">
-    <meta name="description" content="AI가 내 얼굴을 분석해서 강아지상·고양이상·늑대상·토끼상·꼬부기상·공룡상 중 어떤 동물상인지 알려주는 무료 동물상 테스트. 사진 한 장으로 나의 동물상 유형과 성격 특징을 확인해보세요.">
-    <meta name="keywords" content="동물상 테스트, 강아지상, 고양이상, 늑대상, 토끼상, 꼬부기상, 공룡상, 얼굴형 테스트, AI 관상, 동물상 유형">
+    <meta name="description" content="AI가 내 얼굴을 분석해서 강아지상·고양이상·늑대상·토끼상·꼬부기상·공룡상 중 어떤 동물상인지 알려주는 무료 동물상 테스트.">
+    <meta name="keywords" content="동물상 테스트, 강아지상, 고양이상, 늑대상, 토끼상, 꼬부기상, 공룡상, animal face type test">
     <meta property="og:title" content="동물상 테스트 - 나는 어떤 동물상? | 6가지 유형 AI 분석">
     <meta property="og:description" content="AI가 내 얼굴을 분석해 강아지상·고양이상·늑대상·토끼상·꼬부기상·공룡상 중 어떤 유형인지 무료로 알려드립니다!">
     <meta property="og:type" content="website">
@@ -13,7 +13,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5171148531167328" crossorigin="anonymous"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         :root {
             --primary: #6c63ff;
             --primary-dark: #5a52e0;
@@ -22,187 +21,92 @@
             --muted: #777;
             --border: #e8e8f0;
         }
-
-        body {
-            font-family: 'Segoe UI', Apple SD Gothic Neo, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-        }
-
+        body { font-family: 'Segoe UI', Apple SD Gothic Neo, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
         a { color: var(--primary); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
         /* NAV */
-        nav {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-inner {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-logo { font-weight: 800; font-size: 18px; color: var(--primary); }
-        .nav-links { display: flex; gap: 24px; font-size: 14px; }
-        .nav-links a { color: var(--muted); font-weight: 500; }
+        nav { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .nav-logo { font-weight: 800; font-size: 17px; color: var(--primary); white-space: nowrap; }
+        .nav-links { display: flex; gap: 20px; font-size: 14px; }
+        .nav-links a { color: var(--muted); font-weight: 500; white-space: nowrap; }
         .nav-links a:hover { color: var(--primary); text-decoration: none; }
 
+        /* LANG SWITCHER */
+        .lang-switcher { display: flex; gap: 4px; flex-shrink: 0; }
+        .lang-btn { background: none; border: 1.5px solid var(--border); border-radius: 16px; padding: 4px 10px; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--muted); transition: all 0.18s; white-space: nowrap; }
+        .lang-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        @media (max-width: 650px) { .nav-links { display: none; } }
+        @media (max-width: 420px) { .lang-btn { padding: 3px 7px; font-size: 11px; } .nav-logo { font-size: 14px; } }
+
         /* HERO */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 20px 50px;
-        }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 60px 20px 50px; }
         .hero-emoji { font-size: 52px; animation: bounce 2s infinite; display: block; margin-bottom: 14px; }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         .hero h1 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
         .hero p { font-size: 15px; opacity: 0.88; max-width: 520px; margin: 0 auto; }
         .hero-types { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-        .hero-tag {
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 4px 14px;
-            font-size: 13px;
-            font-weight: 600;
-        }
+        .hero-tag { background: rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 14px; font-size: 13px; font-weight: 600; }
 
         /* LAYOUT */
         .page { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; }
 
         /* CARD */
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 32px;
-            margin-top: 32px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-            border: 1px solid var(--border);
-        }
-        .card-title {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .card { background: white; border-radius: 20px; padding: 32px; margin-top: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border: 1px solid var(--border); }
+        .card-title { font-size: 20px; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
 
-        /* TEST TOOL */
-        .upload-area {
-            border: 2.5px dashed #c0b5ff;
-            border-radius: 16px;
-            padding: 44px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            background: #faf9ff;
-        }
+        /* UPLOAD */
+        .upload-area { border: 2.5px dashed #c0b5ff; border-radius: 16px; padding: 44px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: #faf9ff; }
         .upload-area:hover { border-color: var(--primary); background: #f0eeff; }
         .upload-icon { font-size: 44px; margin-bottom: 10px; }
         .upload-area p { color: var(--muted); font-size: 14px; }
         .upload-area strong { color: var(--primary); }
         #fileInput { display: none; }
-
         #previewContainer { display: none; text-align: center; margin-top: 16px; }
-        #previewImg {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 14px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-        .change-btn {
-            margin-top: 10px;
-            background: none;
-            border: 1.5px solid #ddd;
-            border-radius: 20px;
-            padding: 6px 16px;
-            font-size: 13px;
-            color: var(--muted);
-            cursor: pointer;
-        }
+        #previewImg { max-width: 100%; max-height: 300px; border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); object-fit: cover; }
+        .change-btn { margin-top: 10px; background: none; border: 1.5px solid #ddd; border-radius: 20px; padding: 6px 16px; font-size: 13px; color: var(--muted); cursor: pointer; }
         .change-btn:hover { border-color: var(--primary); color: var(--primary); }
-
-        #analyzeBtn {
-            width: 100%;
-            margin-top: 20px;
-            padding: 16px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 14px;
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s, transform 0.1s;
-            display: none;
-        }
+        #analyzeBtn { width: 100%; margin-top: 20px; padding: 16px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.1s; display: none; }
         #analyzeBtn:hover { opacity: 0.92; transform: translateY(-1px); }
 
+        /* LOADING */
         #loading { display: none; text-align: center; padding: 28px 0; }
-        .spinner {
-            width: 46px; height: 46px;
-            border: 5px solid #f0eeff;
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 12px;
-        }
+        .spinner { width: 46px; height: 46px; border: 5px solid #f0eeff; border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* RESULT */
         #result { display: none; }
-        .result-badge {
-            text-align: center;
-            padding: 24px;
-            border-radius: 18px;
-            margin-bottom: 20px;
-        }
-        /* 강아지상 */
-        .result-badge.dog { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 2px solid #ffb74d; }
+        .result-badge { text-align: center; padding: 24px; border-radius: 18px; margin-bottom: 20px; }
+        .result-badge.dog      { background: linear-gradient(135deg,#fff3e0,#ffe0b2); border:2px solid #ffb74d; }
         .result-badge.dog .result-title { color: #e65100; }
-        /* 고양이상 */
-        .result-badge.cat { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #66bb6a; }
+        .result-badge.cat      { background: linear-gradient(135deg,#e8f5e9,#c8e6c9); border:2px solid #66bb6a; }
         .result-badge.cat .result-title { color: #2e7d32; }
-        /* 늑대상 */
-        .result-badge.wolf { background: linear-gradient(135deg, #eceff1, #cfd8dc); border: 2px solid #78909c; }
+        .result-badge.wolf     { background: linear-gradient(135deg,#eceff1,#cfd8dc); border:2px solid #78909c; }
         .result-badge.wolf .result-title { color: #263238; }
-        /* 공룡상 */
-        .result-badge.dinosaur { background: linear-gradient(135deg, #ffebee, #ffcdd2); border: 2px solid #ef5350; }
+        .result-badge.dinosaur { background: linear-gradient(135deg,#ffebee,#ffcdd2); border:2px solid #ef5350; }
         .result-badge.dinosaur .result-title { color: #b71c1c; }
-        /* 꼬부기상 */
-        .result-badge.turtle { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); border: 2px solid #26c6da; }
+        .result-badge.turtle   { background: linear-gradient(135deg,#e0f7fa,#b2ebf2); border:2px solid #26c6da; }
         .result-badge.turtle .result-title { color: #006064; }
-        /* 토끼상 */
-        .result-badge.rabbit { background: linear-gradient(135deg, #fce4ec, #f8bbd0); border: 2px solid #ec407a; }
+        .result-badge.rabbit   { background: linear-gradient(135deg,#fce4ec,#f8bbd0); border:2px solid #ec407a; }
         .result-badge.rabbit .result-title { color: #880e4f; }
-
         .result-emoji { font-size: 68px; animation: pop 0.4s cubic-bezier(0.17,0.67,0.58,1.3); }
-        @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+        @keyframes pop { 0%{transform:scale(0);} 100%{transform:scale(1);} }
         .result-title { font-size: 26px; font-weight: 800; margin-top: 8px; }
         .result-sub { font-size: 14px; color: var(--muted); margin-top: 4px; }
 
+        /* BARS */
         .bar-item { margin-bottom: 14px; }
         .bar-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
         .bar-track { background: #f0f0f5; border-radius: 100px; height: 11px; overflow: hidden; }
         .bar-fill { height: 100%; border-radius: 100px; transition: width 0.8s cubic-bezier(0.22,1,0.36,1); }
-        .bar-fill.dog      { background: linear-gradient(90deg, #ffb74d, #ff9800); }
-        .bar-fill.cat      { background: linear-gradient(90deg, #66bb6a, #43a047); }
-        .bar-fill.wolf     { background: linear-gradient(90deg, #90a4ae, #455a64); }
-        .bar-fill.dinosaur { background: linear-gradient(90deg, #ef5350, #c62828); }
-        .bar-fill.turtle   { background: linear-gradient(90deg, #26c6da, #0097a7); }
-        .bar-fill.rabbit   { background: linear-gradient(90deg, #ec407a, #c2185b); }
+        .bar-fill.dog      { background: linear-gradient(90deg,#ffb74d,#ff9800); }
+        .bar-fill.cat      { background: linear-gradient(90deg,#66bb6a,#43a047); }
+        .bar-fill.wolf     { background: linear-gradient(90deg,#90a4ae,#455a64); }
+        .bar-fill.dinosaur { background: linear-gradient(90deg,#ef5350,#c62828); }
+        .bar-fill.turtle   { background: linear-gradient(90deg,#26c6da,#0097a7); }
+        .bar-fill.rabbit   { background: linear-gradient(90deg,#ec407a,#c2185b); }
 
         .desc-card { background: #faf9ff; border-radius: 14px; padding: 20px; margin-top: 16px; }
         .desc-card h3 { font-size: 15px; margin-bottom: 10px; color: var(--primary); font-weight: 700; }
@@ -210,113 +114,69 @@
         .desc-card ul li { padding: 6px 0; font-size: 14px; color: #555; border-bottom: 1px solid #eee; }
         .desc-card ul li:last-child { border-bottom: none; }
         .desc-card ul li::before { content: "✦ "; color: var(--primary); }
-
-        #retryBtn {
-            width: 100%;
-            margin-top: 16px;
-            padding: 13px;
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+        #retryBtn { width: 100%; margin-top: 16px; padding: 13px; background: white; color: var(--primary); border: 2px solid var(--primary); border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
         #retryBtn:hover { background: var(--primary); color: white; }
 
-        /* INFO SECTIONS */
-        .type-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 4px;
-        }
-        @media (max-width: 720px) { .type-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px) { .type-grid { grid-template-columns: 1fr; } }
-
+        /* TYPE GRID */
+        .type-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 4px; }
+        @media (max-width:720px) { .type-grid { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width:480px) { .type-grid { grid-template-columns: 1fr; } }
         .type-box { border-radius: 16px; padding: 22px; }
-        .type-box.dog-box      { background: #fff8f0; border: 1.5px solid #ffd0a0; }
-        .type-box.cat-box      { background: #f0fff4; border: 1.5px solid #a0e0b0; }
-        .type-box.wolf-box     { background: #eceff1; border: 1.5px solid #b0bec5; }
-        .type-box.dinosaur-box { background: #fff5f5; border: 1.5px solid #ffcdd2; }
-        .type-box.turtle-box   { background: #e0fafa; border: 1.5px solid #80deea; }
-        .type-box.rabbit-box   { background: #fff0f6; border: 1.5px solid #f8bbd0; }
+        .type-box.dog-box      { background:#fff8f0; border:1.5px solid #ffd0a0; }
+        .type-box.cat-box      { background:#f0fff4; border:1.5px solid #a0e0b0; }
+        .type-box.wolf-box     { background:#eceff1; border:1.5px solid #b0bec5; }
+        .type-box.dinosaur-box { background:#fff5f5; border:1.5px solid #ffcdd2; }
+        .type-box.turtle-box   { background:#e0fafa; border:1.5px solid #80deea; }
+        .type-box.rabbit-box   { background:#fff0f6; border:1.5px solid #f8bbd0; }
+        .type-box .type-emoji { font-size:34px; margin-bottom:10px; display:block; }
+        .type-box h3 { font-size:17px; font-weight:800; margin-bottom:8px; }
+        .type-box.dog-box h3      { color:#bf4800; }
+        .type-box.cat-box h3      { color:#1b6b30; }
+        .type-box.wolf-box h3     { color:#263238; }
+        .type-box.dinosaur-box h3 { color:#b71c1c; }
+        .type-box.turtle-box h3   { color:#006064; }
+        .type-box.rabbit-box h3   { color:#880e4f; }
+        .type-box p { font-size:13px; color:#555; margin-bottom:10px; }
+        .type-box ul { padding-left:16px; font-size:13px; color:#555; }
+        .type-box ul li { margin-bottom:4px; }
 
-        .type-box .type-emoji { font-size: 34px; margin-bottom: 10px; display: block; }
-        .type-box h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
-        .type-box.dog-box h3      { color: #bf4800; }
-        .type-box.cat-box h3      { color: #1b6b30; }
-        .type-box.wolf-box h3     { color: #263238; }
-        .type-box.dinosaur-box h3 { color: #b71c1c; }
-        .type-box.turtle-box h3   { color: #006064; }
-        .type-box.rabbit-box h3   { color: #880e4f; }
+        /* STEPS */
+        .steps { margin-top:4px; }
+        .step { display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid var(--border); }
+        .step:last-child { border-bottom:none; }
+        .step-num { width:36px; height:36px; border-radius:50%; background:var(--primary); color:white; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .step-body h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
+        .step-body p { font-size:14px; color:var(--muted); }
 
-        .type-box p { font-size: 13px; color: #555; margin-bottom: 10px; }
-        .type-box ul { padding-left: 16px; font-size: 13px; color: #555; }
-        .type-box ul li { margin-bottom: 4px; }
+        /* FAQ */
+        .faq-item { border-bottom:1px solid var(--border); padding:18px 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-q { font-weight:700; font-size:15px; margin-bottom:8px; color:var(--text); }
+        .faq-q::before { content:"Q. "; color:var(--primary); }
+        .faq-a { font-size:14px; color:#555; }
+        .faq-a::before { content:"A. "; color:var(--muted); font-weight:600; }
 
-        .steps { counter-reset: step; margin-top: 4px; }
-        .step {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .step:last-child { border-bottom: none; }
-        .step-num {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            font-weight: 800;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .step-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-        .step-body p { font-size: 14px; color: var(--muted); }
-
-        .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-q { font-weight: 700; font-size: 15px; margin-bottom: 8px; color: var(--text); }
-        .faq-q::before { content: "Q. "; color: var(--primary); }
-        .faq-a { font-size: 14px; color: #555; }
-        .faq-a::before { content: "A. "; color: var(--muted); font-weight: 600; }
-
-        /* PRIVACY / DISCLAIMER */
-        .prose { font-size: 14px; color: #555; }
-        .prose h4 { font-size: 15px; font-weight: 700; color: var(--text); margin: 16px 0 6px; }
-        .prose h4:first-child { margin-top: 0; }
-        .prose p { margin-bottom: 10px; }
-        .prose ul { padding-left: 18px; margin-bottom: 10px; }
-        .prose ul li { margin-bottom: 4px; }
+        /* PRIVACY */
+        .prose { font-size:14px; color:#555; }
+        .prose h4 { font-size:15px; font-weight:700; color:var(--text); margin:16px 0 6px; }
+        .prose h4:first-child { margin-top:0; }
+        .prose p { margin-bottom:10px; }
+        .prose ul { padding-left:18px; margin-bottom:10px; }
+        .prose ul li { margin-bottom:4px; }
 
         /* DISQUS */
-        .disqus-wrap { background: white; border-radius: 20px; padding: 32px; margin-top: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border: 1px solid var(--border); }
+        .disqus-wrap { background:white; border-radius:20px; padding:32px; margin-top:32px; box-shadow:0 4px 24px rgba(0,0,0,0.07); border:1px solid var(--border); }
 
         /* FOOTER */
-        footer {
-            background: #2d2d3a;
-            color: #aaa;
-            text-align: center;
-            padding: 36px 20px;
-            margin-top: 48px;
-            font-size: 13px;
-        }
-        footer .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 14px; flex-wrap: wrap; }
-        footer .footer-links a { color: #bbb; }
-        footer .footer-links a:hover { color: white; }
-        footer p { margin-top: 8px; line-height: 1.8; }
+        footer { background:#2d2d3a; color:#aaa; text-align:center; padding:36px 20px; margin-top:48px; font-size:13px; }
+        footer .footer-links { display:flex; justify-content:center; gap:20px; margin-bottom:14px; flex-wrap:wrap; }
+        footer .footer-links a { color:#bbb; }
+        footer .footer-links a:hover { color:white; }
+        footer p { margin-top:8px; line-height:1.8; }
 
-        /* AD SLOT */
-        .ad-slot { margin: 32px 0 0; text-align: center; min-height: 100px; }
-        .ad-label { font-size: 11px; color: #bbb; text-align: center; margin-bottom: 4px; letter-spacing: 0.5px; }
+        /* AD */
+        .ad-slot { margin:32px 0 0; text-align:center; min-height:100px; }
+        .ad-label { font-size:11px; color:#bbb; text-align:center; margin-bottom:4px; letter-spacing:0.5px; }
     </style>
 </head>
 <body>
@@ -324,12 +184,18 @@
 <!-- Navigation -->
 <nav>
     <div class="nav-inner">
-        <span class="nav-logo">🐾 동물상 테스트</span>
+        <span class="nav-logo" id="nav-logo">🐾 동물상 테스트</span>
         <div class="nav-links">
-            <a href="#test">테스트</a>
-            <a href="#info">유형 소개</a>
-            <a href="#faq">FAQ</a>
-            <a href="#privacy">개인정보</a>
+            <a href="#test" id="nav-link-test">테스트</a>
+            <a href="#info" id="nav-link-info">유형 소개</a>
+            <a href="#faq" id="nav-link-faq">FAQ</a>
+            <a href="#privacy" id="nav-link-privacy">개인정보</a>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="ko" onclick="setLanguage('ko')">한국어</button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
+            <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">日本語</button>
         </div>
     </div>
 </nav>
@@ -337,15 +203,15 @@
 <!-- Hero -->
 <div class="hero">
     <span class="hero-emoji">🐶🐱🐺🐰🐢🦕</span>
-    <h1>나는 어떤 동물상일까?</h1>
-    <p>AI가 얼굴 사진을 분석해 나의 동물상 유형과<br>성격 특징을 무료로 알려드립니다</p>
+    <h1 id="hero-h1">나는 어떤 동물상일까?</h1>
+    <p id="hero-p">AI가 얼굴 사진을 분석해 나의 동물상 유형과<br>성격 특징을 무료로 알려드립니다</p>
     <div class="hero-types">
-        <span class="hero-tag">🐶 강아지상</span>
-        <span class="hero-tag">🐱 고양이상</span>
-        <span class="hero-tag">🐺 늑대상</span>
-        <span class="hero-tag">🐰 토끼상</span>
-        <span class="hero-tag">🐢 꼬부기상</span>
-        <span class="hero-tag">🦕 공룡상</span>
+        <span class="hero-tag" id="hero-tag-dog">🐶 강아지상</span>
+        <span class="hero-tag" id="hero-tag-cat">🐱 고양이상</span>
+        <span class="hero-tag" id="hero-tag-wolf">🐺 늑대상</span>
+        <span class="hero-tag" id="hero-tag-rabbit">🐰 토끼상</span>
+        <span class="hero-tag" id="hero-tag-turtle">🐢 꼬부기상</span>
+        <span class="hero-tag" id="hero-tag-dino">🦕 공룡상</span>
     </div>
 </div>
 
@@ -354,37 +220,32 @@
     <!-- AD: 상단 -->
     <div class="ad-slot">
         <div class="ad-label">ADVERTISEMENT</div>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5171148531167328"
-             data-ad-slot="auto"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5171148531167328" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <!-- TEST TOOL -->
     <div class="card" id="test">
-        <div class="card-title">🔍 동물상 AI 분석기</div>
+        <div class="card-title" id="test-card-title">🔍 동물상 AI 분석기</div>
 
         <div class="upload-area" onclick="document.getElementById('fileInput').click()" id="dropZone">
             <div class="upload-icon">🖼️</div>
-            <p><strong>클릭</strong>하거나 사진을 끌어다 놓으세요</p>
-            <p style="margin-top:6px;font-size:13px;">JPG · PNG · WEBP 지원 · 얼굴이 잘 나온 정면 사진 권장</p>
+            <p id="upload-hint"><strong>클릭</strong>하거나 사진을 끌어다 놓으세요</p>
+            <p id="upload-formats" style="margin-top:6px;font-size:13px;">JPG · PNG · WEBP 지원 · 얼굴이 잘 나온 정면 사진 권장</p>
         </div>
         <input type="file" id="fileInput" accept="image/*">
 
         <div id="previewContainer">
-            <img id="previewImg" src="" alt="업로드한 사진 미리보기">
+            <img id="previewImg" src="" alt="preview">
             <br>
-            <button class="change-btn" onclick="resetUpload()">🔄 다른 사진 선택</button>
+            <button class="change-btn" id="change-btn" onclick="resetUpload()">🔄 다른 사진 선택</button>
         </div>
 
         <button id="analyzeBtn" onclick="analyze()">🔍 동물상 분석하기</button>
 
         <div id="loading">
             <div class="spinner"></div>
-            <p style="color:var(--muted);font-size:14px;">AI가 열심히 분석 중이에요...</p>
+            <p id="loading-p" style="color:var(--muted);font-size:14px;">AI가 열심히 분석 중이에요...</p>
         </div>
 
         <div id="result">
@@ -404,274 +265,54 @@
 
     <!-- 유형 소개 -->
     <div class="card" id="info">
-        <div class="card-title">🐾 6가지 동물상 유형 소개</div>
-        <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">
-            동물상이란 얼굴의 이목구비와 전체적인 인상이 특정 동물과 닮았다고 느껴지는 관상 표현입니다.
-            AI가 6가지 유형 중 나와 가장 닮은 동물상을 분석해 드립니다.
+        <div class="card-title" id="info-card-title">🐾 6가지 동물상 유형 소개</div>
+        <p id="info-intro" style="font-size:14px;color:var(--muted);margin-bottom:20px;">
+            동물상이란 얼굴의 이목구비와 전체적인 인상이 특정 동물과 닮았다고 느껴지는 관상 표현입니다. AI가 6가지 유형 중 나와 가장 닮은 동물상을 분석해 드립니다.
         </p>
-        <div class="type-grid">
-            <div class="type-box dog-box">
-                <span class="type-emoji">🐶</span>
-                <h3>강아지상</h3>
-                <p>둥글고 부드러운 눈매, 도톰한 볼, 따뜻하고 친근한 인상.</p>
-                <ul>
-                    <li>큰 눈, 둥근 눈매</li>
-                    <li>도톰하고 부드러운 입술</li>
-                    <li>통통하거나 둥근 얼굴형</li>
-                    <li>밝고 온화한 전체 인상</li>
-                </ul>
-            </div>
-            <div class="type-box cat-box">
-                <span class="type-emoji">🐱</span>
-                <h3>고양이상</h3>
-                <p>날카롭고 긴 눈매, 뚜렷한 이목구비, 세련되고 신비로운 인상.</p>
-                <ul>
-                    <li>길고 날카로운 눈매</li>
-                    <li>높고 뚜렷한 콧대</li>
-                    <li>각지거나 갸름한 얼굴형</li>
-                    <li>도도하고 차분한 전체 인상</li>
-                </ul>
-            </div>
-            <div class="type-box wolf-box">
-                <span class="type-emoji">🐺</span>
-                <h3>늑대상</h3>
-                <p>강렬하고 날카로운 눈빛, 선명한 이목구비, 카리스마 넘치는 인상.</p>
-                <ul>
-                    <li>강렬하고 깊은 눈빛</li>
-                    <li>선명하고 뚜렷한 이목구비</li>
-                    <li>다부지고 각진 얼굴형</li>
-                    <li>압도적인 카리스마와 존재감</li>
-                </ul>
-            </div>
-            <div class="type-box dinosaur-box">
-                <span class="type-emoji">🦕</span>
-                <h3>공룡상</h3>
-                <p>독특하고 개성 넘치는 인상, 강하고 임팩트 있는 외모.</p>
-                <ul>
-                    <li>개성 강한 독특한 이목구비</li>
-                    <li>스케일이 크고 대범한 인상</li>
-                    <li>강하고 임팩트 있는 외모</li>
-                    <li>주변에서 잊기 어려운 강한 인상</li>
-                </ul>
-            </div>
-            <div class="type-box turtle-box">
-                <span class="type-emoji">🐢</span>
-                <h3>꼬부기상</h3>
-                <p>동글동글 귀엽고 사랑스러운 인상, 친근하고 포근한 외모.</p>
-                <ul>
-                    <li>동글동글하고 귀여운 얼굴형</li>
-                    <li>작고 아담한 이목구비</li>
-                    <li>포근하고 친근한 인상</li>
-                    <li>누구에게나 사랑받는 외모</li>
-                </ul>
-            </div>
-            <div class="type-box rabbit-box">
-                <span class="type-emoji">🐰</span>
-                <h3>토끼상</h3>
-                <p>크고 선한 눈, 청순하고 순수한 인상, 사랑스럽고 부드러운 외모.</p>
-                <ul>
-                    <li>크고 선하고 맑은 눈</li>
-                    <li>청순하고 순수한 인상</li>
-                    <li>부드럽고 사랑스러운 이목구비</li>
-                    <li>포근하고 감성적인 분위기</li>
-                </ul>
-            </div>
-        </div>
+        <div class="type-grid" id="info-type-grid"></div>
     </div>
 
     <!-- AD: 중간 -->
     <div class="ad-slot">
         <div class="ad-label">ADVERTISEMENT</div>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5171148531167328"
-             data-ad-slot="auto"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5171148531167328" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <!-- 성격 특징 -->
     <div class="card">
-        <div class="card-title">💫 유형별 성격 & 매력</div>
-        <div class="type-grid">
-            <div class="type-box dog-box">
-                <span class="type-emoji">🐶</span>
-                <h3>강아지상 성격</h3>
-                <ul>
-                    <li>누구에게나 친근하고 편안한 분위기</li>
-                    <li>정이 많고 의리를 중시하는 성격</li>
-                    <li>밝고 긍정적인 에너지가 넘침</li>
-                    <li>사람들이 먼저 말을 거는 타입</li>
-                    <li>감정이 얼굴에 잘 드러남</li>
-                </ul>
-            </div>
-            <div class="type-box cat-box">
-                <span class="type-emoji">🐱</span>
-                <h3>고양이상 성격</h3>
-                <ul>
-                    <li>독립적이고 자유로운 성향</li>
-                    <li>차갑게 보이지만 알고 보면 다정함</li>
-                    <li>조용하지만 강한 존재감</li>
-                    <li>패션과 미적 감각이 뛰어남</li>
-                    <li>집중력이 높고 완벽주의 성향</li>
-                </ul>
-            </div>
-            <div class="type-box wolf-box">
-                <span class="type-emoji">🐺</span>
-                <h3>늑대상 성격</h3>
-                <ul>
-                    <li>리더십이 강하고 카리스마 넘침</li>
-                    <li>충성스럽고 의리를 중요시함</li>
-                    <li>조용하지만 압도적인 존재감</li>
-                    <li>한번 신뢰를 쌓으면 끝까지 함께</li>
-                    <li>목표를 향해 끝까지 밀어붙이는 타입</li>
-                </ul>
-            </div>
-            <div class="type-box dinosaur-box">
-                <span class="type-emoji">🦕</span>
-                <h3>공룡상 성격</h3>
-                <ul>
-                    <li>독특하고 강렬한 개성을 가짐</li>
-                    <li>스케일이 크고 대범한 성격</li>
-                    <li>한번 목표를 정하면 끝까지 추진</li>
-                    <li>처음엔 강해 보이지만 의외로 다정함</li>
-                    <li>주변에 잊히지 않는 강한 인상을 남김</li>
-                </ul>
-            </div>
-            <div class="type-box turtle-box">
-                <span class="type-emoji">🐢</span>
-                <h3>꼬부기상 성격</h3>
-                <ul>
-                    <li>느긋하고 여유로운 성격</li>
-                    <li>자신만의 페이스를 잘 지켜나감</li>
-                    <li>묵묵히 꾸준하게 목표를 향해 나아감</li>
-                    <li>한번 친해지면 절대 잊을 수 없는 매력</li>
-                    <li>안정감 있고 신뢰감을 주는 타입</li>
-                </ul>
-            </div>
-            <div class="type-box rabbit-box">
-                <span class="type-emoji">🐰</span>
-                <h3>토끼상 성격</h3>
-                <ul>
-                    <li>활발하고 에너지가 넘침</li>
-                    <li>감수성이 풍부하고 감성적</li>
-                    <li>청순하고 순수한 매력</li>
-                    <li>주변 사람들을 포근하게 만드는 분위기</li>
-                    <li>사랑받는 것을 좋아하는 귀여운 타입</li>
-                </ul>
-            </div>
-        </div>
+        <div class="card-title" id="personality-card-title">💫 유형별 성격 & 매력</div>
+        <div class="type-grid" id="personality-grid"></div>
     </div>
 
     <!-- 이용 방법 -->
     <div class="card">
-        <div class="card-title">📋 테스트 이용 방법</div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                    <h4>얼굴 사진 준비</h4>
-                    <p>정면을 바라보는 밝은 조명의 사진이 가장 정확합니다. 얼굴이 화면의 절반 이상 차지하는 사진을 권장합니다.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                    <h4>사진 업로드</h4>
-                    <p>위의 업로드 영역을 클릭하거나 사진을 끌어다 놓으세요. JPG, PNG, WEBP 형식을 지원합니다.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                    <h4>AI 분석</h4>
-                    <p>Google Teachable Machine 기반 AI가 얼굴의 이목구비와 전체적인 인상을 분석합니다.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <div class="step-body">
-                    <h4>결과 확인</h4>
-                    <p>6가지 동물상 유형별 확률과 함께 나의 동물상 유형과 성격 특징을 확인하세요.</p>
-                </div>
-            </div>
-        </div>
+        <div class="card-title" id="howto-card-title">📋 테스트 이용 방법</div>
+        <div class="steps" id="howto-steps"></div>
     </div>
 
     <!-- FAQ -->
     <div class="card" id="faq">
-        <div class="card-title">❓ 자주 묻는 질문</div>
-        <div class="faq-item">
-            <div class="faq-q">사진이 서버에 저장되나요?</div>
-            <div class="faq-a">아니요. 업로드된 사진은 브라우저 내에서만 처리되며 서버로 전송되거나 저장되지 않습니다. 분석이 완료되면 사진 데이터는 즉시 소멸됩니다.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">분석 결과가 100% 정확한가요?</div>
-            <div class="faq-a">AI 기반 분석으로 재미와 참고 목적으로 제공됩니다. 조명, 각도, 표정에 따라 결과가 달라질 수 있으며, 정확한 관상 진단이 아님을 참고해 주세요.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">어떤 사진이 가장 잘 맞나요?</div>
-            <div class="faq-a">밝은 조명 아래 정면을 바라보는 사진이 가장 정확합니다. 선글라스나 마스크 등으로 얼굴이 가려진 사진은 정확도가 떨어질 수 있습니다.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">AI 모델은 어떻게 만들어졌나요?</div>
-            <div class="faq-a">Google Teachable Machine을 이용해 강아지상·고양이상·늑대상·토끼상·꼬부기상·공룡상 연예인 얼굴 사진을 학습시킨 이미지 분류 모델입니다. MobileNet 기반의 전이학습(Transfer Learning) 방식을 사용합니다.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">6가지 유형 중 어떤 기준으로 분류되나요?</div>
-            <div class="faq-a">강아지상·고양이상·늑대상·토끼상·꼬부기상·공룡상 각 유형의 대표 연예인 이미지 데이터를 학습한 AI가 얼굴의 전체적인 인상과 이목구비를 종합 분석합니다.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">결과가 마음에 안 들면 어떻게 하나요?</div>
-            <div class="faq-a">🔁 다시 테스트하기 버튼을 눌러 다른 사진으로 재시도해보세요. 각도나 조명이 다른 사진을 사용하면 다른 결과가 나올 수 있습니다.</div>
-        </div>
+        <div class="card-title" id="faq-card-title">❓ 자주 묻는 질문</div>
+        <div id="faq-content"></div>
     </div>
 
     <!-- AD: 하단 -->
     <div class="ad-slot">
         <div class="ad-label">ADVERTISEMENT</div>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5171148531167328"
-             data-ad-slot="auto"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5171148531167328" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <!-- 개인정보처리방침 -->
     <div class="card" id="privacy">
-        <div class="card-title">🔒 개인정보처리방침 및 이용약관</div>
-        <div class="prose">
-            <h4>1. 수집하는 정보</h4>
-            <p>본 서비스는 사용자가 직접 업로드한 이미지 파일을 분석에 사용합니다. 업로드된 이미지는 사용자의 브라우저 내에서만 처리되며, 당사 서버로 전송되거나 저장되지 않습니다.</p>
-
-            <h4>2. 이미지 데이터 처리</h4>
-            <p>업로드된 얼굴 사진은 TensorFlow.js 및 Google Teachable Machine 모델을 통해 브라우저 내에서 로컬로 분석됩니다. 분석 완료 후 이미지 데이터는 즉시 삭제되며 어디에도 보관되지 않습니다.</p>
-
-            <h4>3. 광고 서비스</h4>
-            <p>본 사이트는 Google AdSense를 통한 광고를 표시합니다. Google은 사용자의 관심사 기반 광고를 제공하기 위해 쿠키를 사용할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.</p>
-
-            <h4>4. 쿠키 및 로그 데이터</h4>
-            <p>본 서비스는 댓글 기능(Disqus)과 광고(Google AdSense) 제공을 위해 제3자 쿠키를 사용할 수 있습니다. 브라우저 설정에서 쿠키를 비활성화할 수 있으나, 일부 기능이 제한될 수 있습니다.</p>
-
-            <h4>5. 서비스 이용 조건</h4>
-            <ul>
-                <li>본 서비스는 오락 및 참고 목적으로만 제공됩니다.</li>
-                <li>분석 결과는 과학적·의학적 근거가 없으며 재미로만 활용하시기 바랍니다.</li>
-                <li>타인의 사진을 당사자 동의 없이 업로드하는 행위를 금합니다.</li>
-                <li>서비스 이용으로 인한 불이익에 대해 운영자는 책임지지 않습니다.</li>
-            </ul>
-
-            <h4>6. 문의</h4>
-            <p>개인정보 처리에 관한 문의는 아래 댓글 또는 Disqus를 통해 남겨주시면 빠르게 답변 드리겠습니다.</p>
-        </div>
+        <div class="card-title" id="privacy-card-title">🔒 개인정보처리방침 및 이용약관</div>
+        <div class="prose" id="privacy-content"></div>
     </div>
 
     <!-- 댓글 (Disqus) -->
     <div class="disqus-wrap">
-        <div class="card-title" style="margin-bottom:16px;">💬 댓글</div>
+        <div class="card-title" id="disqus-card-title" style="margin-bottom:16px;">💬 댓글</div>
         <div id="disqus_thread"></div>
         <script>
             (function() {
@@ -689,199 +330,581 @@
 <!-- Footer -->
 <footer>
     <div class="footer-links">
-        <a href="#test">동물상 테스트</a>
-        <a href="#info">유형 소개</a>
-        <a href="#faq">FAQ</a>
-        <a href="#privacy">개인정보처리방침</a>
+        <a href="#test" id="footer-link-test">동물상 테스트</a>
+        <a href="#info" id="footer-link-info">유형 소개</a>
+        <a href="#faq" id="footer-link-faq">FAQ</a>
+        <a href="#privacy" id="footer-link-privacy">개인정보처리방침</a>
     </div>
-    <p>🐾 동물상 테스트 | AI 기반 얼굴 유형 분석 서비스</p>
-    <p style="margin-top:6px;">강아지상 · 고양이상 · 늑대상 · 토끼상 · 꼬부기상 · 공룡상 6가지 유형 분석</p>
-    <p style="margin-top:6px;">본 서비스는 오락 목적으로 제공되며 분석 결과는 참고용입니다.</p>
-    <p style="margin-top:6px;">Powered by Google Teachable Machine &amp; TensorFlow.js</p>
+    <p id="footer-p1">🐾 동물상 테스트 | AI 기반 얼굴 유형 분석 서비스</p>
+    <p id="footer-p2" style="margin-top:6px;">강아지상 · 고양이상 · 늑대상 · 토끼상 · 꼬부기상 · 공룡상 6가지 유형 분석</p>
+    <p id="footer-p3" style="margin-top:6px;">본 서비스는 오락 목적으로 제공되며 분석 결과는 참고용입니다.</p>
+    <p id="footer-p4" style="margin-top:6px;">Powered by Google Teachable Machine &amp; TensorFlow.js</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script>
-    const MODEL_URL = "https://teachablemachine.withgoogle.com/models/DkwtuVRUR/";
+// ────────────────────────────────────────────────────────────
+// MODEL
+// ────────────────────────────────────────────────────────────
+const MODEL_URL = "https://teachablemachine.withgoogle.com/models/DkwtuVRUR/";
+let model = null;
+let currentLang = 'ko';
+let lastPredictions = null;
 
-    const descriptions = {
-        "강아지상": {
-            emoji: "🐶",
-            cssClass: "dog",
-            sub: "충성스럽고 따뜻한 매력의 소유자",
-            traits: [
-                "누구에게나 친근하고 편안한 분위기를 줘요",
-                "정이 많고 의리 있는 성격이에요",
-                "밝고 긍정적인 에너지가 넘쳐요",
-                "사람들이 먼저 다가오는 타입이에요",
-                "웃을 때 눈이 초승달처럼 휘어요"
-            ]
+// ────────────────────────────────────────────────────────────
+// ANIMAL DATA (model class name → info per language)
+// ────────────────────────────────────────────────────────────
+const animalData = {
+    "강아지상": {
+        emoji: "🐶", cssClass: "dog",
+        names:    { ko:"강아지상", en:"Dog Type",    zh:"狗狗型",  ja:"犬顔" },
+        subs:     { ko:"충성스럽고 따뜻한 매력의 소유자", en:"Loyal & warm charming personality", zh:"忠诚温暖的魅力型", ja:"忠実で温かい魅力の持ち主" },
+        typeDesc: { ko:"둥글고 부드러운 눈매, 도톰한 볼, 따뜻하고 친근한 인상.", en:"Round, soft eyes, plump cheeks, warm and friendly impression.", zh:"圆润柔和的眼神，饱满脸颊，温暖亲切的印象。", ja:"丸くて柔らかい目元、温かく親しみやすい印象。" },
+        typeTraits: {
+            ko:["큰 눈, 둥근 눈매","도톰하고 부드러운 입술","통통하거나 둥근 얼굴형","밝고 온화한 전체 인상"],
+            en:["Big, round eyes","Full and soft lips","Round or chubby face shape","Bright, gentle overall impression"],
+            zh:["大而圆的眼睛","饱满柔软的嘴唇","圆润的脸型","整体明亮温和的印象"],
+            ja:["大きくて丸い目","ふっくらとした唇","丸みのある顔の形","明るく穏やかな印象"]
         },
-        "고양이상": {
-            emoji: "🐱",
-            cssClass: "cat",
-            sub: "신비롭고 세련된 매력의 소유자",
-            traits: [
-                "독립적이고 자유로운 영혼이에요",
-                "차갑게 보이지만 알고 보면 다정해요",
-                "조용하지만 강한 존재감이 있어요",
-                "패션과 미적 감각이 뛰어나요",
-                "눈빛 하나로 분위기를 장악해요"
-            ]
-        },
-        "늑대상": {
-            emoji: "🐺",
-            cssClass: "wolf",
-            sub: "카리스마 넘치는 강인한 매력의 소유자",
-            traits: [
-                "날카롭고 강렬한 눈빛이 인상적이에요",
-                "리더십이 강하고 카리스마가 있어요",
-                "충성스럽고 의리를 중요시해요",
-                "조용하지만 존재감이 압도적이에요",
-                "한번 신뢰를 쌓으면 끝까지 함께하는 타입이에요"
-            ]
-        },
-        "공룡상": {
-            emoji: "🦕",
-            cssClass: "dinosaur",
-            sub: "압도적인 존재감을 가진 개성 있는 매력의 소유자",
-            traits: [
-                "독특하고 강렬한 개성을 가지고 있어요",
-                "스케일이 크고 대범한 성격이에요",
-                "한번 목표를 정하면 끝까지 밀어붙여요",
-                "처음엔 강해 보이지만 의외로 다정해요",
-                "주변 사람들에게 잊히지 않는 강한 인상을 줘요"
-            ]
-        },
-        "꼬부기상": {
-            emoji: "🐢",
-            cssClass: "turtle",
-            sub: "귀엽고 사랑스러운 포근한 매력의 소유자",
-            traits: [
-                "동글동글하고 귀여운 외모가 매력이에요",
-                "느긋하고 여유로운 성격이에요",
-                "자신만의 페이스를 잘 지켜나가요",
-                "한번 친해지면 절대 잊을 수 없는 매력이 있어요",
-                "묵묵히 꾸준하게 목표를 향해 나아가요"
-            ]
-        },
-        "토끼상": {
-            emoji: "🐰",
-            cssClass: "rabbit",
-            sub: "청순하고 사랑스러운 매력의 소유자",
-            traits: [
-                "크고 선한 눈이 가장 큰 매력이에요",
-                "청순하고 순수한 인상을 줘요",
-                "활발하고 에너지가 넘쳐요",
-                "감수성이 풍부하고 감성적이에요",
-                "주변 사람들을 포근하게 만드는 분위기를 가졌어요"
-            ]
+        traits: {
+            ko:["누구에게나 친근하고 편안한 분위기를 줘요","정이 많고 의리 있는 성격이에요","밝고 긍정적인 에너지가 넘쳐요","사람들이 먼저 다가오는 타입이에요","웃을 때 눈이 초승달처럼 휘어요"],
+            en:["Creates a friendly, comfortable vibe for everyone","Warm-hearted and deeply loyal","Overflows with bright, positive energy","People naturally approach you first","Eyes curve like a crescent when you smile"],
+            zh:["对所有人友善亲切","重情重义，忠诚可靠","充满积极阳光的能量","是让人主动亲近的类型","笑起来眼睛弯成月牙形"],
+            ja:["誰に対しても親しみやすい雰囲気","情が深く義理堅い性格","明るくポジティブなエネルギー","人から先に話しかけられるタイプ","笑うと目が三日月のように細くなる"]
         }
+    },
+    "고양이상": {
+        emoji: "🐱", cssClass: "cat",
+        names:    { ko:"고양이상", en:"Cat Type",    zh:"猫咪型",  ja:"猫顔" },
+        subs:     { ko:"신비롭고 세련된 매력의 소유자", en:"Mysterious & sophisticated charm", zh:"神秘优雅的魅力型", ja:"神秘的でクールな魅力の持ち主" },
+        typeDesc: { ko:"날카롭고 긴 눈매, 뚜렷한 이목구비, 세련되고 신비로운 인상.", en:"Sharp, elongated eyes, defined features, sophisticated and mysterious impression.", zh:"锐利细长的眼神，轮廓分明，优雅神秘的印象。", ja:"鋭くて細い目元、くっきりとした目鼻立ち、洗練された神秘的な印象。" },
+        typeTraits: {
+            ko:["길고 날카로운 눈매","높고 뚜렷한 콧대","각지거나 갸름한 얼굴형","도도하고 차분한 전체 인상"],
+            en:["Long, sharp eye shape","High, defined nose bridge","Angular or slim face shape","Cool, composed overall impression"],
+            zh:["细长锐利的眼形","高挺分明的鼻梁","棱角分明或瓜子脸","整体冷静高贵的印象"],
+            ja:["長くて鋭い目の形","高くてはっきりした鼻筋","シャープなフェイスライン","クールで落ち着いた印象"]
+        },
+        traits: {
+            ko:["독립적이고 자유로운 영혼이에요","차갑게 보이지만 알고 보면 다정해요","조용하지만 강한 존재감이 있어요","패션과 미적 감각이 뛰어나요","눈빛 하나로 분위기를 장악해요"],
+            en:["Independent and free-spirited soul","Seems cold but is deeply warm inside","Quiet yet commands a strong presence","Exceptional fashion and aesthetic sense","A single glance dominates the atmosphere"],
+            zh:["独立自由的灵魂","看似冷淡，其实内心温柔","沉默却有强烈存在感","时尚品味和审美极佳","一个眼神就能掌控全场"],
+            ja:["独立的で自由な魂","クールに見えますが実は優しい","静かでも強い存在感","ファッションと美的センスが優れている","眼差し一つで雰囲気を支配する"]
+        }
+    },
+    "늑대상": {
+        emoji: "🐺", cssClass: "wolf",
+        names:    { ko:"늑대상", en:"Wolf Type",   zh:"狼型",    ja:"狼顔" },
+        subs:     { ko:"카리스마 넘치는 강인한 매력의 소유자", en:"Charismatic & powerful charm", zh:"充满魅力的强势型", ja:"カリスマ溢れる強さの持ち主" },
+        typeDesc: { ko:"강렬하고 날카로운 눈빛, 다부진 이목구비, 카리스마 넘치는 인상.", en:"Intense, sharp eyes, strong features, overwhelmingly charismatic impression.", zh:"强烈锐利的眼神，刚毅的五官，充满个人魅力的印象。", ja:"鋭く強烈な眼差し、力強い目鼻立ち、カリスマ溢れる印象。" },
+        typeTraits: {
+            ko:["강렬하고 깊은 눈빛","선명하고 뚜렷한 이목구비","다부지고 각진 얼굴형","압도적인 카리스마와 존재감"],
+            en:["Intense and deep-set eyes","Sharp and defined features","Strong, angular jaw","Overwhelming charisma and presence"],
+            zh:["强烈深邃的眼神","清晰分明的五官","硬朗有棱角的脸型","压倒性的个人魅力与存在感"],
+            ja:["強烈で深みのある眼差し","鋭くはっきりした目鼻立ち","力強くシャープな顔立ち","圧倒的なカリスマと存在感"]
+        },
+        traits: {
+            ko:["날카롭고 강렬한 눈빛이 인상적이에요","리더십이 강하고 카리스마가 있어요","충성스럽고 의리를 중요시해요","조용하지만 존재감이 압도적이에요","한번 신뢰를 쌓으면 끝까지 함께하는 타입이에요"],
+            en:["Sharp, intense eyes leave a strong impression","Natural leader with powerful charisma","Loyal and values trust above all","Silent but overwhelmingly present","Once trust is built, stays by your side forever"],
+            zh:["犀利强烈的眼神令人印象深刻","领导力强，充满个人魅力","忠诚重义，以信任为先","沉默但存在感压倒一切","一旦建立信任，永远不离不弃"],
+            ja:["鋭く強烈な眼差しが印象的","リーダーシップが強くカリスマ性がある","忠実で義理を大切にする","静かでも圧倒的な存在感","信頼を築いたら最後までそばにいるタイプ"]
+        }
+    },
+    "공룡상": {
+        emoji: "🦕", cssClass: "dinosaur",
+        names:    { ko:"공룡상", en:"Dino Type",   zh:"恐龙型",  ja:"恐竜顔" },
+        subs:     { ko:"압도적인 존재감을 가진 개성 있는 매력의 소유자", en:"Unique personality with overwhelming presence", zh:"个性十足的压倒性存在感型", ja:"圧倒的な存在感を持つ個性的な魅力の持ち主" },
+        typeDesc: { ko:"독특하고 개성 넘치는 인상, 강하고 임팩트 있는 외모.", en:"Unique, highly individual impression with strong visual impact.", zh:"独特个性十足的印象，强烈而有冲击力的外貌。", ja:"独特で個性あふれる印象、強くインパクトのある外見。" },
+        typeTraits: {
+            ko:["개성 강한 독특한 이목구비","스케일이 크고 대범한 인상","강하고 임팩트 있는 외모","주변에서 잊기 어려운 강한 인상"],
+            en:["Highly individual and distinct features","Bold, large-scale impression","Strong, high-impact appearance","An unforgettable presence"],
+            zh:["个性鲜明独特的五官","格局大，气场强","强烈有冲击力的外貌","让人难以忘怀的强烈印象"],
+            ja:["個性的で独特な目鼻立ち","スケールが大きく大胆な印象","強くインパクトのある外見","周囲が忘れにくい強い印象"]
+        },
+        traits: {
+            ko:["독특하고 강렬한 개성을 가지고 있어요","스케일이 크고 대범한 성격이에요","한번 목표를 정하면 끝까지 밀어붙여요","처음엔 강해 보이지만 의외로 다정해요","주변 사람들에게 잊히지 않는 강한 인상을 줘요"],
+            en:["Unique, intensely individual personality","Bold and big-picture thinker","Once a goal is set, pushes through to the end","Seems tough at first, but surprisingly warm","Leaves an unforgettable impression on everyone"],
+            zh:["拥有独特而强烈的个性","格局大，性格豪爽","一旦定下目标就坚持到底","初看强势，其实出乎意料地温柔","给周围人留下难以忘怀的深刻印象"],
+            ja:["独特で強烈な個性を持っている","スケールが大きく大胆な性格","目標を決めたら最後まで突き進む","最初は強そうに見えて意外と優しい","周りの人に忘れられない強い印象を与える"]
+        }
+    },
+    "꼬부기상": {
+        emoji: "🐢", cssClass: "turtle",
+        names:    { ko:"꼬부기상", en:"Turtle Type", zh:"小龟型",  ja:"カメ顔" },
+        subs:     { ko:"귀엽고 사랑스러운 포근한 매력의 소유자", en:"Cute, loveable & cozy charm", zh:"可爱迷人的暖系魅力型", ja:"かわいくて愛らしい温かい魅力の持ち主" },
+        typeDesc: { ko:"동글동글 귀엽고 사랑스러운 인상, 친근하고 포근한 외모.", en:"Round, cute, loveable impression with a cozy and friendly appearance.", zh:"圆润可爱迷人的印象，亲切温暖的外貌。", ja:"まんまるでかわいらしい印象、親しみやすく温かみのある外見。" },
+        typeTraits: {
+            ko:["동글동글하고 귀여운 얼굴형","작고 아담한 이목구비","포근하고 친근한 인상","누구에게나 사랑받는 외모"],
+            en:["Round, cute face shape","Small and compact features","Warm, friendly impression","Naturally loveable appearance"],
+            zh:["圆润可爱的脸型","小巧精致的五官","温暖亲切的印象","天生招人喜爱的外貌"],
+            ja:["まんまるでかわいい顔の形","小さくまとまった目鼻立ち","温かく親しみやすい印象","誰からも愛される外見"]
+        },
+        traits: {
+            ko:["동글동글하고 귀여운 외모가 매력이에요","느긋하고 여유로운 성격이에요","자신만의 페이스를 잘 지켜나가요","한번 친해지면 절대 잊을 수 없는 매력이 있어요","묵묵히 꾸준하게 목표를 향해 나아가요"],
+            en:["Round, cute features are your biggest charm","Easygoing and relaxed personality","Great at keeping your own steady pace","Unforgettable charm once you get close","Silently but steadily works toward goals"],
+            zh:["圆润可爱的外表是最大魅力","性格悠闲自在","很擅长保持自己的节奏","一旦熟悉就有令人难忘的魅力","默默地稳步朝目标前进"],
+            ja:["まんまるでかわいい外見が魅力","のんびりとした余裕のある性格","自分のペースをうまく保つ","仲良くなると忘れられない魅力がある","黙々と着実に目標に向かって進む"]
+        }
+    },
+    "토끼상": {
+        emoji: "🐰", cssClass: "rabbit",
+        names:    { ko:"토끼상", en:"Rabbit Type", zh:"兔兔型",  ja:"うさぎ顔" },
+        subs:     { ko:"청순하고 사랑스러운 매력의 소유자", en:"Pure & adorably charming personality", zh:"清纯可爱的魅力型", ja:"清純で愛らしい魅力の持ち主" },
+        typeDesc: { ko:"크고 선한 눈, 청순하고 순수한 인상, 사랑스럽고 부드러운 외모.", en:"Big, kind eyes, pure and innocent impression, adorably soft appearance.", zh:"大而善良的眼睛，清纯无邪的印象，可爱柔美的外貌。", ja:"大きくて優しい目、清純で無邪気な印象、愛らしく柔らかな外見。" },
+        typeTraits: {
+            ko:["크고 선하고 맑은 눈","청순하고 순수한 인상","부드럽고 사랑스러운 이목구비","포근하고 감성적인 분위기"],
+            en:["Big, kind and clear eyes","Pure and innocent impression","Soft and adorable features","Warm, emotional atmosphere"],
+            zh:["大而善良清澈的眼睛","清纯无邪的印象","柔美可爱的五官","温柔感性的氛围"],
+            ja:["大きくて優しく澄んだ瞳","清純で無邪気な印象","柔らかく愛らしい目鼻立ち","温かく感性的な雰囲気"]
+        },
+        traits: {
+            ko:["크고 선한 눈이 가장 큰 매력이에요","청순하고 순수한 인상을 줘요","활발하고 에너지가 넘쳐요","감수성이 풍부하고 감성적이에요","주변 사람들을 포근하게 만드는 분위기를 가졌어요"],
+            en:["Big, kind eyes are your greatest charm","Pure and innocent impression","Active and full of energy","Emotionally sensitive and expressive","Creates a warm, cozy atmosphere for everyone"],
+            zh:["大而善良的眼睛是最大魅力","给人清纯无邪的印象","活泼充满能量","感受力丰富，情感细腻","拥有让周围人感到温暖的氛围"],
+            ja:["大きくて優しい目が最大の魅力","清純で無邪気な印象を与える","活発でエネルギーが溢れている","感受性が豊かで感性的","周りの人を温かくする雰囲気を持っている"]
+        }
+    }
+};
+
+const ANIMAL_ORDER = ["강아지상","고양이상","늑대상","공룡상","꼬부기상","토끼상"];
+
+// ────────────────────────────────────────────────────────────
+// TRANSLATIONS (static UI text)
+// ────────────────────────────────────────────────────────────
+const T = {
+    ko: {
+        pageTitle: "동물상 테스트 - 강아지상? 고양이상? 늑대상? | AI 얼굴 분석 6가지 유형",
+        nav: { logo:"🐾 동물상 테스트", test:"테스트", info:"유형 소개", faq:"FAQ", privacy:"개인정보" },
+        hero: { h1:"나는 어떤 동물상일까?", p:"AI가 얼굴 사진을 분석해 나의 동물상 유형과<br>성격 특징을 무료로 알려드립니다" },
+        tags: { dog:"🐶 강아지상", cat:"🐱 고양이상", wolf:"🐺 늑대상", rabbit:"🐰 토끼상", turtle:"🐢 꼬부기상", dino:"🦕 공룡상" },
+        testCardTitle: "🔍 동물상 AI 분석기",
+        uploadHint: "<strong>클릭</strong>하거나 사진을 끌어다 놓으세요",
+        uploadFormats: "JPG · PNG · WEBP 지원 · 얼굴이 잘 나온 정면 사진 권장",
+        changeBtn: "🔄 다른 사진 선택",
+        analyzeBtn: "🔍 동물상 분석하기",
+        loadingText: "AI가 열심히 분석 중이에요...",
+        retryBtn: "🔁 다시 테스트하기",
+        traitsSuffix: " 특징",
+        personalitySuffix: " 성격",
+        infoCardTitle: "🐾 6가지 동물상 유형 소개",
+        infoIntro: "동물상이란 얼굴의 이목구비와 전체적인 인상이 특정 동물과 닮았다고 느껴지는 관상 표현입니다. AI가 6가지 유형 중 나와 가장 닮은 동물상을 분석해 드립니다.",
+        personalityCardTitle: "💫 유형별 성격 & 매력",
+        howtoCardTitle: "📋 테스트 이용 방법",
+        howtoSteps: [
+            { title:"얼굴 사진 준비", desc:"정면을 바라보는 밝은 조명의 사진이 가장 정확합니다. 얼굴이 화면의 절반 이상 차지하는 사진을 권장합니다." },
+            { title:"사진 업로드", desc:"위의 업로드 영역을 클릭하거나 사진을 끌어다 놓으세요. JPG, PNG, WEBP 형식을 지원합니다." },
+            { title:"AI 분석", desc:"Google Teachable Machine 기반 AI가 얼굴의 이목구비와 전체적인 인상을 분석합니다." },
+            { title:"결과 확인", desc:"6가지 동물상 유형별 확률과 함께 나의 동물상 유형과 성격 특징을 확인하세요." }
+        ],
+        faqCardTitle: "❓ 자주 묻는 질문",
+        faqItems: [
+            { q:"사진이 서버에 저장되나요?", a:"아니요. 업로드된 사진은 브라우저 내에서만 처리되며 서버로 전송되거나 저장되지 않습니다. 분석이 완료되면 사진 데이터는 즉시 소멸됩니다." },
+            { q:"분석 결과가 100% 정확한가요?", a:"AI 기반 분석으로 재미와 참고 목적으로 제공됩니다. 조명, 각도, 표정에 따라 결과가 달라질 수 있으며, 정확한 관상 진단이 아님을 참고해 주세요." },
+            { q:"어떤 사진이 가장 잘 맞나요?", a:"밝은 조명 아래 정면을 바라보는 사진이 가장 정확합니다. 선글라스나 마스크 등으로 얼굴이 가려진 사진은 정확도가 떨어질 수 있습니다." },
+            { q:"AI 모델은 어떻게 만들어졌나요?", a:"Google Teachable Machine을 이용해 강아지상·고양이상·늑대상·토끼상·꼬부기상·공룡상 연예인 얼굴 사진을 학습시킨 이미지 분류 모델입니다. MobileNet 기반의 전이학습(Transfer Learning) 방식을 사용합니다." },
+            { q:"6가지 유형 중 어떤 기준으로 분류되나요?", a:"각 유형의 대표 연예인 이미지 데이터를 학습한 AI가 얼굴의 전체적인 인상과 이목구비를 종합 분석합니다." },
+            { q:"결과가 마음에 안 들면 어떻게 하나요?", a:"🔁 다시 테스트하기 버튼을 눌러 다른 사진으로 재시도해보세요. 각도나 조명이 다른 사진을 사용하면 다른 결과가 나올 수 있습니다." }
+        ],
+        privacyCardTitle: "🔒 개인정보처리방침 및 이용약관",
+        privacySections: [
+            { title:"1. 수집하는 정보", text:"본 서비스는 사용자가 직접 업로드한 이미지 파일을 분석에 사용합니다. 업로드된 이미지는 사용자의 브라우저 내에서만 처리되며, 당사 서버로 전송되거나 저장되지 않습니다." },
+            { title:"2. 이미지 데이터 처리", text:"업로드된 얼굴 사진은 TensorFlow.js 및 Google Teachable Machine 모델을 통해 브라우저 내에서 로컬로 분석됩니다. 분석 완료 후 이미지 데이터는 즉시 삭제됩니다." },
+            { title:"3. 광고 서비스", text:'본 사이트는 Google AdSense를 통한 광고를 표시합니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.' },
+            { title:"4. 쿠키 및 로그 데이터", text:"본 서비스는 댓글 기능(Disqus)과 광고(Google AdSense) 제공을 위해 제3자 쿠키를 사용할 수 있습니다." },
+            { title:"5. 서비스 이용 조건", list:["본 서비스는 오락 및 참고 목적으로만 제공됩니다.","분석 결과는 과학적·의학적 근거가 없으며 재미로만 활용하시기 바랍니다.","타인의 사진을 당사자 동의 없이 업로드하는 행위를 금합니다.","서비스 이용으로 인한 불이익에 대해 운영자는 책임지지 않습니다."] },
+            { title:"6. 문의", text:"개인정보 처리에 관한 문의는 아래 댓글 또는 Disqus를 통해 남겨주시면 빠르게 답변 드리겠습니다." }
+        ],
+        disqusTitle: "💬 댓글",
+        footerP1: "🐾 동물상 테스트 | AI 기반 얼굴 유형 분석 서비스",
+        footerP2: "강아지상 · 고양이상 · 늑대상 · 토끼상 · 꼬부기상 · 공룡상 6가지 유형 분석",
+        footerP3: "본 서비스는 오락 목적으로 제공되며 분석 결과는 참고용입니다.",
+        footerP4: "Powered by Google Teachable Machine & TensorFlow.js"
+    },
+    en: {
+        pageTitle: "Animal Face Type Test - Dog? Cat? Wolf? | AI Face Analysis 6 Types",
+        nav: { logo:"🐾 Animal Face Test", test:"Test", info:"Types", faq:"FAQ", privacy:"Privacy" },
+        hero: { h1:"What Animal Face Type Are You?", p:"AI analyzes your face photo to reveal your animal face type<br>and personality traits — completely free!" },
+        tags: { dog:"🐶 Dog Type", cat:"🐱 Cat Type", wolf:"🐺 Wolf Type", rabbit:"🐰 Rabbit Type", turtle:"🐢 Turtle Type", dino:"🦕 Dino Type" },
+        testCardTitle: "🔍 Animal Face AI Analyzer",
+        uploadHint: "<strong>Click</strong> or drag & drop your photo here",
+        uploadFormats: "JPG · PNG · WEBP supported · Front-facing, well-lit photo recommended",
+        changeBtn: "🔄 Choose Another Photo",
+        analyzeBtn: "🔍 Analyze My Animal Type",
+        loadingText: "AI is analyzing your face...",
+        retryBtn: "🔁 Try Again",
+        traitsSuffix: " Traits",
+        personalitySuffix: " Personality",
+        infoCardTitle: "🐾 6 Animal Face Types",
+        infoIntro: "Animal face type refers to the idea that a person's facial features and overall impression resemble a particular animal. Our AI finds your closest match among 6 types.",
+        personalityCardTitle: "💫 Personality & Charm by Type",
+        howtoCardTitle: "📋 How to Use",
+        howtoSteps: [
+            { title:"Prepare Your Photo", desc:"A front-facing photo in good lighting gives the most accurate results. The face should take up at least half the frame." },
+            { title:"Upload Your Photo", desc:"Click the upload area or drag and drop your photo. JPG, PNG, and WEBP formats are supported." },
+            { title:"AI Analysis", desc:"Google Teachable Machine-based AI analyzes your facial features and overall impression." },
+            { title:"See Your Result", desc:"Check your animal face type with probability scores for all 6 types and discover your personality traits!" }
+        ],
+        faqCardTitle: "❓ FAQ",
+        faqItems: [
+            { q:"Is my photo stored on a server?", a:"No. Your uploaded photo is processed only within your browser and is never sent to or stored on any server. Photo data is discarded immediately after analysis." },
+            { q:"Is the result 100% accurate?", a:"This is AI-based analysis provided for fun and reference. Results may vary depending on lighting, angle, and expression. This is not an official physiognomy diagnosis." },
+            { q:"What kind of photo works best?", a:"A well-lit, front-facing photo gives the best results. Photos with sunglasses, masks, or anything covering the face may reduce accuracy." },
+            { q:"How was the AI model built?", a:"The model was trained using Google Teachable Machine with celebrity photos representing each of the 6 types, using MobileNet-based transfer learning." },
+            { q:"How are the 6 types determined?", a:"AI trained on celebrity image data for each type analyzes your overall facial impression and features to find your closest match." },
+            { q:"What if I don't like my result?", a:"Hit the 🔁 Try Again button and try a different photo. Different angles or lighting can produce different results." }
+        ],
+        privacyCardTitle: "🔒 Privacy Policy & Terms of Use",
+        privacySections: [
+            { title:"1. Information Collected", text:"This service uses the image file directly uploaded by the user for analysis. The uploaded image is processed only within the user's browser and is never transmitted to or stored on our servers." },
+            { title:"2. Image Data Processing", text:"Uploaded face photos are analyzed locally in the browser using TensorFlow.js and the Google Teachable Machine model. Image data is deleted immediately after analysis." },
+            { title:"3. Advertising Services", text:'This site displays ads via Google AdSense. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> for details.' },
+            { title:"4. Cookies & Log Data", text:"This service may use third-party cookies for comments (Disqus) and advertising (Google AdSense)." },
+            { title:"5. Terms of Service", list:["This service is provided for entertainment and reference purposes only.","Analysis results have no scientific or medical basis and are for fun only.","Uploading someone else's photo without their consent is prohibited.","The operator is not responsible for any disadvantages arising from use of the service."] },
+            { title:"6. Contact", text:"For privacy inquiries, please leave a comment below via Disqus." }
+        ],
+        disqusTitle: "💬 Comments",
+        footerP1: "🐾 Animal Face Test | AI-Powered Face Type Analysis",
+        footerP2: "Dog · Cat · Wolf · Rabbit · Turtle · Dino — 6 Animal Types",
+        footerP3: "This service is for entertainment only. Results are for reference.",
+        footerP4: "Powered by Google Teachable Machine & TensorFlow.js"
+    },
+    zh: {
+        pageTitle: "动物脸型测试 - 狗狗型？猫咪型？狼型？| AI面部分析6种类型",
+        nav: { logo:"🐾 动物脸型测试", test:"测试", info:"类型介绍", faq:"常见问题", privacy:"隐私政策" },
+        hero: { h1:"我是哪种动物脸型？", p:"AI分析您的面部照片，免费告诉您的动物脸型<br>和性格特征！" },
+        tags: { dog:"🐶 狗狗型", cat:"🐱 猫咪型", wolf:"🐺 狼型", rabbit:"🐰 兔兔型", turtle:"🐢 小龟型", dino:"🦕 恐龙型" },
+        testCardTitle: "🔍 动物脸型AI分析器",
+        uploadHint: "<strong>点击</strong>或将照片拖拽到此处",
+        uploadFormats: "支持JPG · PNG · WEBP · 建议使用正面清晰的面部照片",
+        changeBtn: "🔄 选择其他照片",
+        analyzeBtn: "🔍 分析我的动物脸型",
+        loadingText: "AI正在努力分析中...",
+        retryBtn: "🔁 重新测试",
+        traitsSuffix: "的特征",
+        personalitySuffix: "的性格特征",
+        infoCardTitle: "🐾 6种动物脸型介绍",
+        infoIntro: "动物脸型是指一个人的五官和整体气质与某种动物相似的面相表达。AI将从6种类型中找出与您最相似的动物脸型。",
+        personalityCardTitle: "💫 各类型性格与魅力",
+        howtoCardTitle: "📋 使用方法",
+        howtoSteps: [
+            { title:"准备照片", desc:"正面朝向、光线充足的照片效果最佳。建议脸部占画面一半以上的照片。" },
+            { title:"上传照片", desc:"点击上传区域或将照片拖拽进来。支持JPG、PNG、WEBP格式。" },
+            { title:"AI分析", desc:"基于Google Teachable Machine的AI分析您的五官和整体气质。" },
+            { title:"查看结果", desc:"查看6种动物脸型的概率分布，了解您的脸型类型和性格特征！" }
+        ],
+        faqCardTitle: "❓ 常见问题",
+        faqItems: [
+            { q:"照片会被存储到服务器吗？", a:"不会。上传的照片仅在您的浏览器内处理，不会发送到任何服务器或被存储。分析完成后，照片数据会立即销毁。" },
+            { q:"分析结果100%准确吗？", a:"这是基于AI的分析，仅供娱乐参考。结果可能因光线、角度和表情而有所不同，这不是专业的面相诊断。" },
+            { q:"什么样的照片效果最好？", a:"光线充足、正面朝向的照片效果最佳。戴墨镜、口罩等遮住面部的照片可能影响准确度。" },
+            { q:"AI模型是如何建立的？", a:"使用Google Teachable Machine，通过各类型代表明星的面部照片进行训练，采用基于MobileNet的迁移学习方式。" },
+            { q:"6种类型是如何分类的？", a:"AI学习了6种类型代表明星的图像数据，综合分析您的整体气质和五官来判断最接近的类型。" },
+            { q:"如果不喜欢结果怎么办？", a:"点击🔁重新测试按钮，换一张照片再试试。不同角度或光线的照片可能会得到不同的结果。" }
+        ],
+        privacyCardTitle: "🔒 隐私政策与使用条款",
+        privacySections: [
+            { title:"1. 收集的信息", text:"本服务仅使用用户直接上传的图像文件进行分析。上传的图像仅在用户浏览器内处理，不会传输到或存储在我们的服务器上。" },
+            { title:"2. 图像数据处理", text:"上传的面部照片通过TensorFlow.js和Google Teachable Machine模型在浏览器内本地分析。分析完成后图像数据立即删除。" },
+            { title:"3. 广告服务", text:'本网站通过Google AdSense投放广告。详情请参阅<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google隐私政策</a>。' },
+            { title:"4. Cookie及日志数据", text:"本服务可能为评论功能(Disqus)和广告(Google AdSense)使用第三方Cookie。" },
+            { title:"5. 服务使用条款", list:["本服务仅供娱乐和参考使用。","分析结果无科学或医学依据，仅供娱乐。","禁止在未经当事人同意的情况下上传他人照片。","运营方不对因使用本服务而产生的任何损失承担责任。"] },
+            { title:"6. 联系方式", text:"如有隐私相关问题，请通过下方Disqus评论联系我们。" }
+        ],
+        disqusTitle: "💬 评论",
+        footerP1: "🐾 动物脸型测试 | AI面部类型分析服务",
+        footerP2: "狗狗型 · 猫咪型 · 狼型 · 兔兔型 · 小龟型 · 恐龙型 共6种类型",
+        footerP3: "本服务仅供娱乐，分析结果仅供参考。",
+        footerP4: "Powered by Google Teachable Machine & TensorFlow.js"
+    },
+    ja: {
+        pageTitle: "動物顔タイプ診断 - 犬顔？猫顔？狼顔？| AI顔分析6タイプ",
+        nav: { logo:"🐾 動物顔タイプ診断", test:"テスト", info:"タイプ紹介", faq:"FAQ", privacy:"プライバシー" },
+        hero: { h1:"私はどんな動物顔タイプ？", p:"AIが顔写真を分析して、あなたの動物顔タイプと<br>性格の特徴を無料でお知らせします！" },
+        tags: { dog:"🐶 犬顔", cat:"🐱 猫顔", wolf:"🐺 狼顔", rabbit:"🐰 うさぎ顔", turtle:"🐢 カメ顔", dino:"🦕 恐竜顔" },
+        testCardTitle: "🔍 動物顔AI診断器",
+        uploadHint: "<strong>クリック</strong>または写真をドラッグ&ドロップ",
+        uploadFormats: "JPG · PNG · WEBP対応 · 正面を向いた明るい写真を推奨",
+        changeBtn: "🔄 別の写真を選ぶ",
+        analyzeBtn: "🔍 動物顔タイプを診断する",
+        loadingText: "AIが一生懸命分析中...",
+        retryBtn: "🔁 もう一度テストする",
+        traitsSuffix: "の特徴",
+        personalitySuffix: "の性格",
+        infoCardTitle: "🐾 6つの動物顔タイプ紹介",
+        infoIntro: "動物顔タイプとは、顔の目鼻立ちや全体的な印象が特定の動物に似ていると感じる人相表現です。AIが6つのタイプの中からあなたに最も近いタイプを診断します。",
+        personalityCardTitle: "💫 タイプ別性格＆魅力",
+        howtoCardTitle: "📋 使い方",
+        howtoSteps: [
+            { title:"顔写真の準備", desc:"正面を向いた明るい照明の写真が最も正確です。顔が画面の半分以上を占める写真を推奨します。" },
+            { title:"写真のアップロード", desc:"アップロードエリアをクリックするか、写真をドラッグ&ドロップしてください。JPG、PNG、WEBP形式に対応しています。" },
+            { title:"AI分析", desc:"Google Teachable MachineベースのAIが顔の目鼻立ちと全体的な印象を分析します。" },
+            { title:"結果の確認", desc:"6つの動物顔タイプ別の確率と共に、あなたのタイプと性格の特徴を確認しましょう！" }
+        ],
+        faqCardTitle: "❓ よくある質問",
+        faqItems: [
+            { q:"写真はサーバーに保存されますか？", a:"いいえ。アップロードされた写真はブラウザ内でのみ処理され、サーバーに送信・保存されることはありません。分析完了後、写真データは即座に消去されます。" },
+            { q:"分析結果は100%正確ですか？", a:"AIによる分析で、楽しみや参考目的で提供されています。照明・角度・表情によって結果が異なる場合があり、正式な人相診断ではありません。" },
+            { q:"どんな写真が最も適していますか？", a:"明るい照明の下で正面を向いた写真が最も正確です。サングラスやマスクで顔が隠れた写真は精度が低下する場合があります。" },
+            { q:"AIモデルはどのように作られましたか？", a:"Google Teachable Machineを使用して、各タイプを代表する芸能人の顔写真で学習した画像分類モデルです。MobileNetベースの転移学習方式を使用しています。" },
+            { q:"6つのタイプはどのような基準で分類されますか？", a:"6タイプの代表芸能人の画像データで学習したAIが、顔全体の印象と目鼻立ちを総合的に分析します。" },
+            { q:"結果が気に入らない場合は？", a:"🔁もう一度テストするボタンを押して別の写真で再挑戦してください。角度や照明が異なる写真を使うと異なる結果が出る場合があります。" }
+        ],
+        privacyCardTitle: "🔒 プライバシーポリシー＆利用規約",
+        privacySections: [
+            { title:"1. 収集する情報", text:"本サービスはユーザーが直接アップロードした画像ファイルを分析に使用します。アップロードされた画像はユーザーのブラウザ内でのみ処理され、当社サーバーへの送信や保存は行いません。" },
+            { title:"2. 画像データの処理", text:"アップロードされた顔写真はTensorFlow.jsおよびGoogle Teachable MachineモデルによってブラウザI内でローカルに分析されます。分析完了後、画像データは即座に削除されます。" },
+            { title:"3. 広告サービス", text:'本サイトはGoogle AdSenseを通じた広告を表示します。詳細は<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Googleプライバシーポリシー</a>をご参照ください。' },
+            { title:"4. CookieおよびログデータA", text:"本サービスはコメント機能(Disqus)と広告(Google AdSense)提供のために第三者Cookieを使用する場合があります。" },
+            { title:"5. サービス利用条件", list:["本サービスは娯楽および参考目的のみで提供されます。","分析結果に科学的・医学的根拠はなく、娯楽目的のみでご利用ください。","本人の同意なしに他人の写真をアップロードする行為を禁じます。","サービス利用による不利益について運営者は責任を負いません。"] },
+            { title:"6. お問い合わせ", text:"プライバシーに関するお問い合わせは、下記コメント欄またはDisqusよりご連絡ください。" }
+        ],
+        disqusTitle: "💬 コメント",
+        footerP1: "🐾 動物顔タイプ診断 | AIによる顔タイプ分析サービス",
+        footerP2: "犬顔・猫顔・狼顔・うさぎ顔・カメ顔・恐竜顔 6タイプ診断",
+        footerP3: "本サービスは娯楽目的で提供され、分析結果は参考用です。",
+        footerP4: "Powered by Google Teachable Machine & TensorFlow.js"
+    }
+};
+
+// ────────────────────────────────────────────────────────────
+// LANGUAGE SWITCH
+// ────────────────────────────────────────────────────────────
+function setLanguage(lang) {
+    currentLang = lang;
+    const t = T[lang];
+
+    document.documentElement.lang = lang;
+    document.title = t.pageTitle;
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // Nav
+    document.getElementById('nav-logo').textContent         = t.nav.logo;
+    document.getElementById('nav-link-test').textContent    = t.nav.test;
+    document.getElementById('nav-link-info').textContent    = t.nav.info;
+    document.getElementById('nav-link-faq').textContent     = t.nav.faq;
+    document.getElementById('nav-link-privacy').textContent = t.nav.privacy;
+
+    // Hero
+    document.getElementById('hero-h1').textContent      = t.hero.h1;
+    document.getElementById('hero-p').innerHTML          = t.hero.p;
+    document.getElementById('hero-tag-dog').textContent    = t.tags.dog;
+    document.getElementById('hero-tag-cat').textContent    = t.tags.cat;
+    document.getElementById('hero-tag-wolf').textContent   = t.tags.wolf;
+    document.getElementById('hero-tag-rabbit').textContent = t.tags.rabbit;
+    document.getElementById('hero-tag-turtle').textContent = t.tags.turtle;
+    document.getElementById('hero-tag-dino').textContent   = t.tags.dino;
+
+    // Test card
+    document.getElementById('test-card-title').textContent = t.testCardTitle;
+    document.getElementById('upload-hint').innerHTML        = t.uploadHint;
+    document.getElementById('upload-formats').textContent  = t.uploadFormats;
+    document.getElementById('change-btn').textContent      = t.changeBtn;
+    document.getElementById('analyzeBtn').textContent      = t.analyzeBtn;
+    document.getElementById('loading-p').textContent       = t.loadingText;
+    document.getElementById('retryBtn').textContent        = t.retryBtn;
+
+    // Info section
+    document.getElementById('info-card-title').textContent = t.infoCardTitle;
+    document.getElementById('info-intro').textContent      = t.infoIntro;
+    renderTypeGrid(lang);
+
+    // Personality
+    document.getElementById('personality-card-title').textContent = t.personalityCardTitle;
+    renderPersonalityGrid(lang);
+
+    // How to
+    document.getElementById('howto-card-title').textContent = t.howtoCardTitle;
+    renderSteps(lang);
+
+    // FAQ
+    document.getElementById('faq-card-title').textContent = t.faqCardTitle;
+    renderFAQ(lang);
+
+    // Privacy
+    document.getElementById('privacy-card-title').textContent = t.privacyCardTitle;
+    renderPrivacy(lang);
+
+    // Disqus / Footer
+    document.getElementById('disqus-card-title').textContent  = t.disqusTitle;
+    document.getElementById('footer-p1').textContent          = t.footerP1;
+    document.getElementById('footer-p2').textContent          = t.footerP2;
+    document.getElementById('footer-p3').textContent          = t.footerP3;
+    document.getElementById('footer-p4').textContent          = t.footerP4;
+    document.getElementById('footer-link-test').textContent    = t.nav.test;
+    document.getElementById('footer-link-info').textContent    = t.nav.info;
+    document.getElementById('footer-link-faq').textContent     = t.nav.faq;
+    document.getElementById('footer-link-privacy').textContent = t.nav.privacy;
+
+    // Re-render result if visible
+    if (lastPredictions && document.getElementById('result').style.display !== 'none') {
+        showResult(lastPredictions);
+    }
+
+    localStorage.setItem('lang', lang);
+}
+
+function renderTypeGrid(lang) {
+    document.getElementById('info-type-grid').innerHTML = ANIMAL_ORDER.map(key => {
+        const a = animalData[key];
+        const traits = a.typeTraits[lang].map(t => '<li>' + t + '</li>').join('');
+        return '<div class="type-box ' + a.cssClass + '-box">' +
+            '<span class="type-emoji">' + a.emoji + '</span>' +
+            '<h3>' + a.names[lang] + '</h3>' +
+            '<p>' + a.typeDesc[lang] + '</p>' +
+            '<ul>' + traits + '</ul>' +
+            '</div>';
+    }).join('');
+}
+
+function renderPersonalityGrid(lang) {
+    const suffix = T[lang].personalitySuffix;
+    document.getElementById('personality-grid').innerHTML = ANIMAL_ORDER.map(key => {
+        const a = animalData[key];
+        const traits = a.traits[lang].map(t => '<li>' + t + '</li>').join('');
+        return '<div class="type-box ' + a.cssClass + '-box">' +
+            '<span class="type-emoji">' + a.emoji + '</span>' +
+            '<h3>' + a.names[lang] + suffix + '</h3>' +
+            '<ul>' + traits + '</ul>' +
+            '</div>';
+    }).join('');
+}
+
+function renderSteps(lang) {
+    document.getElementById('howto-steps').innerHTML = T[lang].howtoSteps.map((s, i) =>
+        '<div class="step">' +
+            '<div class="step-num">' + (i + 1) + '</div>' +
+            '<div class="step-body"><h4>' + s.title + '</h4><p>' + s.desc + '</p></div>' +
+        '</div>'
+    ).join('');
+}
+
+function renderFAQ(lang) {
+    document.getElementById('faq-content').innerHTML = T[lang].faqItems.map(item =>
+        '<div class="faq-item">' +
+            '<div class="faq-q">' + item.q + '</div>' +
+            '<div class="faq-a">' + item.a + '</div>' +
+        '</div>'
+    ).join('');
+}
+
+function renderPrivacy(lang) {
+    document.getElementById('privacy-content').innerHTML = T[lang].privacySections.map(s => {
+        let html = '<h4>' + s.title + '</h4>';
+        if (s.list) {
+            html += '<ul>' + s.list.map(i => '<li>' + i + '</li>').join('') + '</ul>';
+        } else {
+            html += '<p>' + s.text + '</p>';
+        }
+        return html;
+    }).join('');
+}
+
+// ────────────────────────────────────────────────────────────
+// FILE UPLOAD
+// ────────────────────────────────────────────────────────────
+document.getElementById('fileInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) loadPreview(file);
+});
+
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.background = '#ece9ff'; });
+dropZone.addEventListener('dragleave', () => { dropZone.style.background = '#faf9ff'; });
+dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.style.background = '#faf9ff';
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) loadPreview(file);
+});
+
+function loadPreview(file) {
+    const reader = new FileReader();
+    reader.onload = ev => {
+        document.getElementById('previewImg').src = ev.target.result;
+        document.getElementById('dropZone').style.display = 'none';
+        document.getElementById('previewContainer').style.display = 'block';
+        document.getElementById('analyzeBtn').style.display = 'block';
+        document.getElementById('result').style.display = 'none';
     };
+    reader.readAsDataURL(file);
+}
 
-    let model = null;
+function resetUpload() {
+    document.getElementById('fileInput').value = '';
+    document.getElementById('previewContainer').style.display = 'none';
+    document.getElementById('dropZone').style.display = 'block';
+    document.getElementById('analyzeBtn').style.display = 'none';
+    document.getElementById('result').style.display = 'none';
+    lastPredictions = null;
+}
 
-    async function loadModel() {
-        if (!model) {
-            model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
-        }
+// ────────────────────────────────────────────────────────────
+// ANALYSIS
+// ────────────────────────────────────────────────────────────
+async function loadModel() {
+    if (!model) {
+        model = await tmImage.load(MODEL_URL + 'model.json', MODEL_URL + 'metadata.json');
     }
+}
 
-    document.getElementById("fileInput").addEventListener("change", function(e) {
-        const file = e.target.files[0];
-        if (file) loadPreview(file);
+async function analyze() {
+    document.getElementById('analyzeBtn').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('result').style.display = 'none';
+    await loadModel();
+    const predictions = await model.predict(document.getElementById('previewImg'));
+    document.getElementById('loading').style.display = 'none';
+    showResult(predictions);
+}
+
+function showResult(predictions) {
+    lastPredictions = predictions;
+    const lang = currentLang;
+    const sorted = [...predictions].sort((a, b) => b.probability - a.probability);
+    const topKey = sorted[0].className;
+    const info = animalData[topKey] || { emoji:'😊', cssClass:'dog', names:{ko:topKey,en:topKey,zh:topKey,ja:topKey}, subs:{ko:'',en:'',zh:'',ja:''}, traits:{ko:[],en:[],zh:[],ja:[]} };
+
+    const badge = document.getElementById('resultBadge');
+    badge.className = 'result-badge ' + info.cssClass;
+    document.getElementById('resultEmoji').textContent = info.emoji;
+    document.getElementById('resultTitle').textContent = info.names[lang];
+    document.getElementById('resultSub').textContent   = info.subs[lang];
+
+    // Bars
+    const barsContainer = document.getElementById('barsContainer');
+    barsContainer.innerHTML = '';
+    sorted.forEach(pred => {
+        const pct   = Math.round(pred.probability * 100);
+        const pInfo = animalData[pred.className] || { emoji:'❓', cssClass:'dog', names:{ko:pred.className,en:pred.className,zh:pred.className,ja:pred.className} };
+        const div   = document.createElement('div');
+        div.className = 'bar-item';
+        div.innerHTML =
+            '<div class="bar-label"><span>' + pInfo.emoji + ' ' + pInfo.names[lang] + '</span><span>' + pct + '%</span></div>' +
+            '<div class="bar-track"><div class="bar-fill ' + pInfo.cssClass + '" style="width:0%" data-width="' + pct + '"></div></div>';
+        barsContainer.appendChild(div);
     });
+    setTimeout(() => {
+        barsContainer.querySelectorAll('.bar-fill').forEach(bar => { bar.style.width = bar.dataset.width + '%'; });
+    }, 100);
 
-    const dropZone = document.getElementById("dropZone");
-    dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.style.background = "#ece9ff"; });
-    dropZone.addEventListener("dragleave", () => { dropZone.style.background = "#faf9ff"; });
-    dropZone.addEventListener("drop", e => {
-        e.preventDefault();
-        dropZone.style.background = "#faf9ff";
-        const file = e.dataTransfer.files[0];
-        if (file && file.type.startsWith("image/")) loadPreview(file);
-    });
+    document.getElementById('descTitle').textContent  = info.names[lang] + T[lang].traitsSuffix;
+    document.getElementById('descList').innerHTML     = info.traits[lang].map(t => '<li>' + t + '</li>').join('');
+    document.getElementById('result').style.display  = 'block';
+}
 
-    function loadPreview(file) {
-        const reader = new FileReader();
-        reader.onload = ev => {
-            document.getElementById("previewImg").src = ev.target.result;
-            document.getElementById("dropZone").style.display = "none";
-            document.getElementById("previewContainer").style.display = "block";
-            document.getElementById("analyzeBtn").style.display = "block";
-            document.getElementById("result").style.display = "none";
-        };
-        reader.readAsDataURL(file);
-    }
+function retry() {
+    resetUpload();
+    document.getElementById('result').style.display  = 'none';
+    document.getElementById('loading').style.display = 'none';
+}
 
-    function resetUpload() {
-        document.getElementById("fileInput").value = "";
-        document.getElementById("previewContainer").style.display = "none";
-        document.getElementById("dropZone").style.display = "block";
-        document.getElementById("analyzeBtn").style.display = "none";
-        document.getElementById("result").style.display = "none";
-    }
-
-    async function analyze() {
-        document.getElementById("analyzeBtn").style.display = "none";
-        document.getElementById("loading").style.display = "block";
-        document.getElementById("result").style.display = "none";
-
-        await loadModel();
-        const predictions = await model.predict(document.getElementById("previewImg"));
-
-        document.getElementById("loading").style.display = "none";
-        showResult(predictions);
-    }
-
-    function showResult(predictions) {
-        const sorted = [...predictions].sort((a, b) => b.probability - a.probability);
-        const label = sorted[0].className;
-        const info = descriptions[label] || { emoji: "😊", cssClass: "dog", sub: "", traits: [] };
-
-        const badge = document.getElementById("resultBadge");
-        badge.className = "result-badge " + info.cssClass;
-        document.getElementById("resultEmoji").textContent = info.emoji;
-        document.getElementById("resultTitle").textContent = label;
-        document.getElementById("resultSub").textContent = info.sub;
-
-        // 동적 바 생성 (확률 높은 순)
-        const barsContainer = document.getElementById("barsContainer");
-        barsContainer.innerHTML = "";
-        sorted.forEach(pred => {
-            const pct = Math.round(pred.probability * 100);
-            const pInfo = descriptions[pred.className] || { emoji: "❓", cssClass: "dog" };
-            const div = document.createElement("div");
-            div.className = "bar-item";
-            div.innerHTML =
-                '<div class="bar-label">' +
-                    '<span>' + pInfo.emoji + ' ' + pred.className + '</span>' +
-                    '<span>' + pct + '%</span>' +
-                '</div>' +
-                '<div class="bar-track">' +
-                    '<div class="bar-fill ' + pInfo.cssClass + '" style="width:0%" data-width="' + pct + '"></div>' +
-                '</div>';
-            barsContainer.appendChild(div);
-        });
-
-        setTimeout(() => {
-            barsContainer.querySelectorAll(".bar-fill").forEach(bar => {
-                bar.style.width = bar.dataset.width + "%";
-            });
-        }, 100);
-
-        document.getElementById("descTitle").textContent = label + " 특징";
-        document.getElementById("descList").innerHTML = info.traits.map(t => "<li>" + t + "</li>").join("");
-
-        document.getElementById("result").style.display = "block";
-    }
-
-    function retry() {
-        resetUpload();
-        document.getElementById("result").style.display = "none";
-        document.getElementById("loading").style.display = "none";
-    }
+// ────────────────────────────────────────────────────────────
+// INIT
+// ────────────────────────────────────────────────────────────
+setLanguage(localStorage.getItem('lang') || 'ko');
 </script>
 </body>
 </html>
