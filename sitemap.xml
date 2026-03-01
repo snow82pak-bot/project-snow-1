@@ -11,4 +11,28 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://project-snow-2.pages.dev/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://project-snow-2.pages.dev/"/>
   </url>
+  <url>
+    <loc>https://project-snow-2.pages.dev/blog/index.html</loc>
+    <lastmod>2025-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://project-snow-2.pages.dev/blog/dongmulsang-types.html</loc>
+    <lastmod>2025-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://project-snow-2.pages.dev/blog/dongmulsang-style.html</loc>
+    <lastmod>2025-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://project-snow-2.pages.dev/blog/dongmulsang-love.html</loc>
+    <lastmod>2025-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
